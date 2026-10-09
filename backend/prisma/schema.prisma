@@ -1,0 +1,597 @@
+// ======================================================
+// DOBATO Backend - Prisma Schema
+// Database: MongoDB Atlas
+// Prisma Client: @prisma/client
+// ======================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// ======================================================
+// ENUMS
+// ======================================================
+
+enum Role {
+  SUPER_ADMIN
+  ADMIN
+  EVENT_ADMIN
+}
+
+enum ParticipationType {
+  ATTEND_ONLY
+  ATTEND_AND_POETRY
+}
+
+enum RegistrationStatus {
+  REGISTERED
+  CHECKED_IN
+  CANCELLED
+}
+
+enum AuditAction {
+  LOGIN
+  LOGOUT
+  CHECK_IN
+  MANUAL_CHECK_IN
+  JUDGE_CREATED
+  JUDGE_UPDATED
+  JUDGE_ACTIVATED
+  JUDGE_DEACTIVATED
+  JUDGE_ASSIGNED
+  JUDGE_UNASSIGNED
+  CRITERION_CREATED
+  CRITERION_UPDATED
+  SCORE_SUBMITTED
+  SCORE_UPDATED
+  COMPETITION_STATE_CHANGED
+  WINNER_SELECTED
+  RESULTS_FINALIZED
+  ADMIN_USER_CREATED
+  ADMIN_USER_UPDATED
+  ADMIN_USER_STATUS_CHANGED
+  REGISTRATION_CREATED
+  REGISTRATION_UPDATED
+}
+
+enum CompetitionStatus {
+  DRAFT
+  OPEN
+  JUDGING
+  FINAL_REVIEW
+  FINALIZED
+}
+
+enum ReviewStatus {
+  PENDING
+  REVIEWED
+  NEEDS_ATTENTION
+}
+
+enum JudgeRole {
+  JUDGE
+}
+
+enum PoetryLanguage {
+  NEPALI
+  ENGLISH
+  HINDI
+  OTHER
+}
+
+enum PerformanceType {
+  POETRY
+  STORY_TELLING
+  MUSIC
+  OTHER
+}
+
+enum DiscoverySource {
+  INSTAGRAM
+  TIKTOK
+  FRIENDS
+  OTHERS
+}
+
+enum PoetryCategory {
+  GENERAL
+  YOUTH
+  SPECIAL
+}
+
+// ======================================================
+// EVENT
+// ======================================================
+
+model Event {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  title              String
+  slug               String   @unique
+  description        String?
+  slogan             String?
+  secondarySlogan    String?
+  poetryTheme        String?
+  eventDate          DateTime
+  timezone           String   @default("Asia/Kathmandu")
+  location           String?
+  registrationFee    Float    @default(0)
+  isRegistrationOpen Boolean  @default(true)
+  isActive           Boolean  @default(true)
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  highlights         Highlight[]
+  prizes             Prize[]
+  poetryCompetitions PoetryCompetition[]
+  faqs               EventFAQ[]
+  performances       EventPerformance[]
+  registrations      Registration[]
+
+  @@map("events")
+}
+
+// ======================================================
+// EVENT HIGHLIGHTS
+// ======================================================
+
+model Highlight {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  eventId      String   @db.ObjectId
+  event        Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  title        String
+  description  String
+  iconKey      String
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([eventId])
+  @@map("highlights")
+}
+
+// ======================================================
+// PRIZES
+// ======================================================
+
+model Prize {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  eventId  String @db.ObjectId
+  event    Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  position Int
+  title    String
+
+  cashAmount Float?
+  currency   String @default("NPR")
+
+  benefits     String[]
+  displayOrder Int      @default(0)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@unique([eventId, position])
+  @@index([eventId])
+  @@index([position])
+  @@map("prizes")
+}
+
+// ======================================================
+// POETRY COMPETITION
+// ======================================================
+
+model PoetryCompetition {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  eventId String @db.ObjectId
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  title       String
+  theme       String
+  description String
+
+  status CompetitionStatus @default(DRAFT)
+  isOpen Boolean           @default(true)
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  finalizedAt DateTime?
+  finalizedBy String?
+
+  guidelines      PoetryGuideline[]
+  judgingCriteria JudgingCriterion[]
+  assignments     PoetryJudgeAssignment[]
+  scores          JudgeScore[]
+  winners         PoetryWinner[]
+
+  @@index([eventId])
+  @@index([status])
+  @@map("poetry_competitions")
+}
+
+// ======================================================
+// POETRY GUIDELINES
+// ======================================================
+
+model PoetryGuideline {
+  id            String            @id @default(auto()) @map("_id") @db.ObjectId
+  competitionId String            @db.ObjectId
+  competition   PoetryCompetition @relation(fields: [competitionId], references: [id], onDelete: Cascade)
+
+  title        String
+  description  String
+  displayOrder Int    @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([competitionId])
+  @@map("poetry_guidelines")
+}
+
+// ======================================================
+// JUDGING CRITERIA
+// ======================================================
+
+model JudgingCriterion {
+  id            String            @id @default(auto()) @map("_id") @db.ObjectId
+  competitionId String            @db.ObjectId
+  competition   PoetryCompetition @relation(fields: [competitionId], references: [id], onDelete: Cascade)
+
+  name        String  @default("Criterion")
+  title       String?
+  description String?
+
+  weight       Float @default(0)
+  maxScore     Float @default(10)
+  displayOrder Int   @default(0)
+
+  isPublished Boolean @default(true)
+  isActive    Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  scores JudgeScore[]
+
+  @@index([competitionId])
+  @@map("judging_criteria")
+}
+
+// ======================================================
+// EVENT FAQ
+// ======================================================
+
+model EventFAQ {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  eventId String @db.ObjectId
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  question     String
+  answer       String
+  displayOrder Int     @default(0)
+  isPublished  Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([eventId])
+  @@map("event_faqs")
+}
+
+// ======================================================
+// EVENT PERFORMANCE
+// ======================================================
+
+model EventPerformance {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  eventId String @db.ObjectId
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  title           String
+  description     String?
+  performerName   String?
+  performanceType String  @default("music")
+
+  displayOrder Int     @default(0)
+  isPublished  Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([eventId])
+  @@map("event_performances")
+}
+
+// ======================================================
+// REGISTRATION
+// ======================================================
+
+model Registration {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  registrationId String @unique
+
+  eventId String @db.ObjectId
+  event   Event  @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  fullName String
+  email    String
+  phone    String
+  age      Int?
+  city     String?
+  gender   String?
+
+  participationType ParticipationType @default(ATTEND_ONLY)
+
+  discoverySource      DiscoverySource?
+  discoverySourceOther String?
+
+  stageIntroductionName String?
+
+  mediaAgreement     Boolean  @default(true)
+  mediaConsent       Boolean? @default(true)
+  informationConsent Boolean? @default(true)
+  eventConsent       Boolean? @default(true)
+
+  status RegistrationStatus @default(REGISTERED)
+
+  verificationTokenHash      String   @unique
+  verificationTokenCreatedAt DateTime @default(now())
+
+  emailSent          Boolean   @default(false)
+  emailSentAt        DateTime?
+  emailFailureReason String?
+
+  source   String? @default("DIRECT")
+  medium   String?
+  campaign String?
+  content  String?
+  term     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  poetryParticipant PoetryParticipant?
+
+  @@unique([eventId, email])
+  @@unique([eventId, phone])
+  @@index([eventId])
+  @@index([email])
+  @@index([phone])
+  @@index([participationType])
+  @@index([discoverySource])
+  @@index([status])
+  @@index([source])
+  @@index([campaign])
+  @@index([createdAt])
+  @@map("registrations")
+}
+
+// ======================================================
+// POETRY PARTICIPANT
+// ======================================================
+
+model PoetryParticipant {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  registrationId String       @unique @db.ObjectId
+  registration   Registration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  competitionId String? @db.ObjectId
+
+  poetryTitle String
+  topic       String @default("DOBATO")
+
+  language        PoetryLanguage? @default(NEPALI)
+  performanceType PerformanceType @default(POETRY)
+
+  description String?
+
+  reviewStatus ReviewStatus @default(PENDING)
+  reviewNote   String?
+  reviewedBy   String?
+  reviewedAt   DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  assignments PoetryJudgeAssignment[]
+  scores      JudgeScore[]
+  winners     PoetryWinner[]
+
+  @@index([competitionId])
+  @@index([poetryTitle])
+  @@index([language])
+  @@index([performanceType])
+  @@index([reviewStatus])
+  @@map("poetry_participants")
+}
+
+// ======================================================
+// JUDGE
+// ======================================================
+
+model Judge {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  name         String
+  email        String  @unique
+  phone        String?
+  passwordHash String
+
+  role     JudgeRole @default(JUDGE)
+  isActive Boolean   @default(true)
+
+  lastLoginAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  assignments PoetryJudgeAssignment[]
+  scores      JudgeScore[]
+
+  @@map("judges")
+}
+
+// ======================================================
+// POETRY JUDGE ASSIGNMENT
+// ======================================================
+
+model PoetryJudgeAssignment {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  judgeId String @db.ObjectId
+  judge   Judge  @relation(fields: [judgeId], references: [id], onDelete: Cascade)
+
+  competitionId String            @db.ObjectId
+  competition   PoetryCompetition @relation(fields: [competitionId], references: [id], onDelete: Cascade)
+
+  participantId String            @db.ObjectId
+  participant   PoetryParticipant @relation(fields: [participantId], references: [id], onDelete: Cascade)
+
+  assignedBy String
+  assignedAt DateTime @default(now())
+
+  @@unique([judgeId, participantId])
+  @@index([judgeId])
+  @@index([competitionId])
+  @@index([participantId])
+  @@map("poetry_judge_assignments")
+}
+
+// ======================================================
+// JUDGE SCORE
+// ======================================================
+
+model JudgeScore {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  competitionId String            @db.ObjectId
+  competition   PoetryCompetition @relation(fields: [competitionId], references: [id], onDelete: Cascade)
+
+  judgeId String @db.ObjectId
+  judge   Judge  @relation(fields: [judgeId], references: [id], onDelete: Cascade)
+
+  participantId String            @db.ObjectId
+  participant   PoetryParticipant @relation(fields: [participantId], references: [id], onDelete: Cascade)
+
+  criterionId String           @db.ObjectId
+  criterion   JudgingCriterion @relation(fields: [criterionId], references: [id], onDelete: Cascade)
+
+  score   Float
+  comment String?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  submittedAt DateTime @default(now())
+
+  @@unique([judgeId, participantId, criterionId])
+  @@index([competitionId])
+  @@index([judgeId])
+  @@index([participantId])
+  @@index([criterionId])
+  @@map("judge_scores")
+}
+
+// ======================================================
+// POETRY WINNER
+// ======================================================
+
+model PoetryWinner {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  competitionId String            @db.ObjectId
+  competition   PoetryCompetition @relation(fields: [competitionId], references: [id], onDelete: Cascade)
+
+  participantId String            @db.ObjectId
+  participant   PoetryParticipant @relation(fields: [participantId], references: [id], onDelete: Cascade)
+
+  position Int
+  score    Float
+
+  selectedBy String
+  selectedAt DateTime @default(now())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([competitionId, position])
+  @@unique([competitionId, participantId])
+  @@index([competitionId])
+  @@index([participantId])
+  @@index([position])
+  @@map("poetry_winners")
+}
+
+// ======================================================
+// ADMIN USER
+// ======================================================
+
+model AdminUser {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  name         String
+  email        String @unique
+  passwordHash String
+
+  role     Role    @default(EVENT_ADMIN)
+  isActive Boolean @default(true)
+
+  lastLoginAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  auditLogs AdminAuditLog[]
+
+  @@map("admin_users")
+}
+
+// ======================================================
+// ADMIN AUDIT LOG
+// ======================================================
+
+model AdminAuditLog {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  adminId   String    @db.ObjectId
+  adminUser AdminUser @relation(fields: [adminId], references: [id], onDelete: Cascade)
+
+  action AuditAction
+
+  entityType String?
+  entityId   String?
+
+  metadata Json?
+
+  createdAt DateTime @default(now())
+
+  @@index([adminId])
+  @@index([action])
+  @@index([createdAt])
+  @@map("admin_audit_logs")
+}
+
+// ======================================================
+// CONTACT SUBMISSION
+// ======================================================
+
+model ContactSubmission {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  name    String
+  email   String
+  subject String?
+  message String
+
+  isRead Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  @@index([email])
+  @@index([isRead])
+  @@map("contact_submissions")
+}

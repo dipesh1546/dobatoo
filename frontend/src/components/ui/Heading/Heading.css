@@ -1,0 +1,27 @@
+.dobato-heading {
+  margin-bottom: 0.5rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--dobato-white);
+  line-height: var(--line-height-tight);
+}
+
+.dobato-heading-serif {
+  font-family: var(--font-serif);
+  font-weight: var(--font-weight-semibold);
+}
+
+.dobato-heading-sans {
+  font-family: var(--font-sans);
+}
+
+.dobato-heading-gradient-primary {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dobato-heading-gradient-romantic {
+  background: var(--gradient-romantic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

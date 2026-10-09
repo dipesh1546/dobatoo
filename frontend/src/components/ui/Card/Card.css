@@ -1,0 +1,50 @@
+.dobato-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+/* Variants */
+.dobato-card-glass {
+  background: var(--glass-bg-dark);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border-dark);
+}
+
+.dobato-card-elevated {
+  background: var(--dobato-dark-surface);
+  border: 1px solid rgba(244, 114, 182, 0.12);
+  box-shadow: var(--shadow-md);
+}
+
+.dobato-card-bordered {
+  background: transparent;
+  border: 1px solid rgba(244, 114, 182, 0.25);
+}
+
+.dobato-card-flat {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Hover effect */
+.dobato-card-hover:hover {
+  transform: translateY(-6px);
+  border-color: rgba(244, 114, 182, 0.4);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Glow effect */
+.dobato-card-glow::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(217, 70, 239, 0.15) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: var(--z-negative);
+}

@@ -1,0 +1,50 @@
+.dobato-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+.dobato-badge-sm {
+  padding: 0.2rem 0.65rem;
+  font-size: 0.75rem;
+}
+
+.dobato-badge-md {
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+}
+
+.dobato-badge-primary {
+  background: rgba(244, 114, 182, 0.15);
+  color: var(--dobato-pink);
+  border: 1px solid rgba(244, 114, 182, 0.3);
+}
+
+.dobato-badge-romantic {
+  background: rgba(217, 70, 239, 0.15);
+  color: #F0ABFC;
+  border: 1px solid rgba(217, 70, 239, 0.3);
+}
+
+.dobato-badge-outline {
+  background: transparent;
+  color: var(--dobato-white);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dobato-badge-dark {
+  background: var(--dobato-plum);
+  color: var(--dobato-pink);
+}
+
+.dobato-badge-glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  color: var(--dobato-white);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}

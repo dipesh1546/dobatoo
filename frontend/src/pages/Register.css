@@ -1,0 +1,305 @@
+/* DOBATO Registration Page Styles */
+
+.register-container {
+  padding-top: 9rem;
+  padding-bottom: 5rem;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .register-container {
+    padding-top: 6.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-container {
+    padding-top: 5.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+/* Step Progress Bar */
+.step-progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2.5rem 0 3.5rem 0;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .step-progress-bar {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0 2rem 0;
+  }
+}
+
+.step-progress-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dobato-muted);
+  transition: all var(--transition-normal);
+}
+
+@media (max-width: 640px) {
+  .step-progress-item {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
+.step-progress-item-active {
+  background: rgba(244, 114, 182, 0.15);
+  border-color: var(--dobato-pink);
+  color: var(--dobato-white);
+  box-shadow: 0 0 15px rgba(244, 114, 182, 0.2);
+}
+
+.step-progress-item-completed {
+  background: rgba(217, 70, 239, 0.1);
+  border-color: rgba(217, 70, 239, 0.3);
+  color: var(--dobato-pink);
+}
+
+.step-progress-number {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
+.step-progress-item-active .step-progress-number {
+  background: var(--gradient-primary);
+  color: var(--dobato-white);
+}
+
+/* Step 1 Selectable Cards */
+.participation-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 2.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .participation-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.selectable-card {
+  position: relative;
+  background: var(--glass-bg-dark);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid var(--glass-border-dark);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem 2rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-align: left;
+}
+
+.selectable-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(244, 114, 182, 0.4);
+}
+
+.selectable-card-selected {
+  background: linear-gradient(180deg, rgba(50, 17, 63, 0.85) 0%, rgba(26, 12, 34, 0.95) 100%);
+  border-color: var(--dobato-pink);
+  box-shadow: var(--shadow-lg), 0 0 25px rgba(244, 114, 182, 0.25);
+}
+
+.card-check-indicator {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.selectable-card-selected .card-check-indicator {
+  background: var(--gradient-primary);
+  border-color: transparent;
+}
+
+/* Form Group Controls */
+.dobato-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 640px) {
+  .dobato-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group-full {
+  grid-column: 1 / -1;
+}
+
+.dobato-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: left;
+}
+
+.dobato-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--dobato-white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dobato-required {
+  color: var(--dobato-pink);
+}
+
+.dobato-input,
+.dobato-select,
+.dobato-textarea {
+  width: 100%;
+  padding: 0.85rem 1.15rem;
+  background: rgba(22, 10, 29, 0.7);
+  border: 1px solid rgba(244, 114, 182, 0.25);
+  border-radius: var(--radius-md);
+  color: var(--dobato-white);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.dobato-input:focus,
+.dobato-select:focus,
+.dobato-textarea:focus {
+  border-color: var(--dobato-pink);
+  box-shadow: 0 0 12px rgba(244, 114, 182, 0.25);
+}
+
+.dobato-input-error {
+  border-color: #EF4444 !important;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.2) !important;
+}
+
+.field-error-msg {
+  font-size: 0.8rem;
+  color: #F87171;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+/* Consent Checkbox List */
+.consent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.consent-checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.consent-checkbox-input {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  accent-color: var(--dobato-pink);
+  cursor: pointer;
+}
+
+.consent-label-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Review Summary Card */
+.review-summary-card {
+  background: rgba(34, 16, 43, 0.5);
+  border: 1px solid rgba(244, 114, 182, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.review-section {
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.review-section:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.review-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.review-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dobato-pink);
+}
+
+.review-data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.85rem;
+  font-size: 0.9rem;
+}
+
+.review-label {
+  color: var(--dobato-muted);
+  font-size: 0.8rem;
+  display: block;
+}
+
+.review-value {
+  color: var(--dobato-white);
+  font-weight: 600;
+}

@@ -1,0 +1,58 @@
+/* DOBATO Social Share Component Styles */
+
+.dobato-share-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.75rem;
+  background: rgba(34, 16, 43, 0.6);
+  border: 1px solid rgba(244, 114, 182, 0.15);
+  border-radius: var(--radius-lg);
+  margin: 2.5rem 0;
+}
+
+.dobato-share-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--dobato-white);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dobato-share-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dobato-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--dobato-white);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.dobato-share-btn:hover {
+  background: rgba(244, 114, 182, 0.2);
+  border-color: var(--dobato-pink);
+  transform: translateY(-2px);
+}
+
+.dobato-share-toast {
+  font-size: 0.8rem;
+  color: var(--dobato-pink);
+  font-weight: 500;
+  animation: fadeIn var(--transition-fast) forwards;
+}

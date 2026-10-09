@@ -1,0 +1,16 @@
+<svg width="280" height="70" viewBox="0 0 280 70" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DOBATO — Two Paths. One Connection.">
+  <defs>
+    <linearGradient id="dobato-text-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#FFFFFF" />
+      <stop offset="60%" stopColor="#FDF2F8" />
+      <stop offset="100%" stopColor="#F472B6" />
+    </linearGradient>
+  </defs>
+  <image href="/favicon.png" x="8" y="7" width="56" height="56" />
+  <text x="76" y="41" font-family="'Inter', system-ui, sans-serif" font-size="28" font-weight="800" letter-spacing="-0.5" fill="url(#dobato-text-grad)">
+    DOBATO
+  </text>
+  <text x="78" y="58" font-family="'Inter', system-ui, sans-serif" font-size="10" font-weight="500" letter-spacing="0.5" fill="#F472B6" opacity="0.9">
+    Two Paths. One Connection.
+  </text>
+</svg>

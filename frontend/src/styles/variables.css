@@ -1,0 +1,62 @@
+/* DOBATO Design Tokens & Color System */
+
+:root {
+  /* Brand Core Colors */
+  --dobato-pink: #F472B6;
+  --dobato-rose: #EC4899;
+  --dobato-magenta: #D946EF;
+  --dobato-purple: #A855F7;
+  --dobato-deep-purple: #7E22CE;
+  --dobato-plum: #3B123F;
+  --dobato-dark: #160A1D;
+  --dobato-dark-surface: #22102B;
+  --dobato-white: #FFFFFF;
+  --dobato-soft: #FFF7FC;
+  --dobato-muted: #9CA3AF;
+  --dobato-subtle: #4B3854;
+
+  /* Brand Gradients */
+  --gradient-primary: linear-gradient(135deg, #F472B6 0%, #D946EF 50%, #7E22CE 100%);
+  --gradient-romantic: linear-gradient(135deg, #EC4899 0%, #A855F7 100%);
+  --gradient-dark: linear-gradient(135deg, #160A1D 0%, #32113F 100%);
+  --gradient-soft: linear-gradient(135deg, #FFF7FC 0%, #FCE7F3 100%);
+  --gradient-surface: linear-gradient(180deg, rgba(50, 17, 63, 0.6) 0%, rgba(22, 10, 29, 0.8) 100%);
+  --gradient-glow: radial-gradient(circle at center, rgba(217, 70, 239, 0.2) 0%, rgba(22, 10, 29, 0) 70%);
+
+  /* Border Radii */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* Glassmorphism & Borders */
+  --glass-bg-dark: rgba(34, 16, 43, 0.65);
+  --glass-bg-light: rgba(255, 255, 255, 0.75);
+  --glass-border-dark: rgba(244, 114, 182, 0.18);
+  --glass-border-light: rgba(217, 70, 239, 0.2);
+  --glass-blur: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 4px 12px rgba(22, 10, 29, 0.15);
+  --shadow-md: 0 8px 24px rgba(22, 10, 29, 0.25);
+  --shadow-lg: 0 16px 40px rgba(126, 34, 206, 0.3);
+  --shadow-glow: 0 0 30px rgba(217, 70, 239, 0.35);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Z-Index Hierarchy */
+  --z-negative: -1;
+  --z-normal: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-tooltip: 600;
+}

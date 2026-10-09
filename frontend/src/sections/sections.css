@@ -1,0 +1,452 @@
+/* DOBATO Phase 2 Homepage Sections Custom Styles */
+
+/* 1. Hero Section */
+.hero-section {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8rem;
+  padding-bottom: 5rem;
+  overflow: hidden;
+}
+
+.hero-bg-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1000px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(217, 70, 239, 0.18) 0%, rgba(126, 34, 206, 0.08) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-grid-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3.5rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 992px) {
+  .hero-section {
+    padding-top: 6.5rem;
+    padding-bottom: 3.5rem;
+    min-height: auto;
+  }
+
+  .hero-grid-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .hero-grid-layout > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-grid-layout .text-body-lg {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-grid-layout div[style*="display: flex"] {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding-top: 5.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .hero-paths-canvas {
+    height: 260px;
+  }
+}
+
+/* Hero Visual Frame & Editorial Image Card */
+.hero-visual-frame {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image-card {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 16 / 11;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--glass-bg-dark);
+  border: 1px solid rgba(244, 114, 182, 0.25);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 45px rgba(217, 70, 239, 0.2);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.hero-image-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 0 55px rgba(244, 114, 182, 0.3);
+  border-color: rgba(244, 114, 182, 0.45);
+}
+
+.hero-backdrop-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-image-card:hover .hero-backdrop-img {
+  transform: scale(1.04);
+}
+
+.hero-backdrop-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(22, 10, 29, 0.15) 0%, rgba(22, 10, 29, 0.4) 60%, rgba(22, 10, 29, 0.85) 100%);
+  pointer-events: none;
+}
+
+.hero-brand-overlay {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-full);
+  background: rgba(22, 10, 29, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(244, 114, 182, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hero-brand-emblem {
+  display: block;
+}
+
+.hero-brand-caption {
+  font-family: var(--font-serif);
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--dobato-white);
+  letter-spacing: 0.02em;
+}
+
+.hero-floating-badge {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-full);
+  background: rgba(22, 10, 29, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 640px) {
+  .hero-brand-overlay {
+    top: 0.85rem;
+    left: 0.85rem;
+    padding: 0.35rem 0.75rem;
+  }
+
+  .hero-brand-caption {
+    font-size: 0.75rem;
+  }
+
+  .hero-floating-badge {
+    bottom: 0.85rem;
+    right: 0.85rem;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.75rem;
+  }
+}
+
+.floating-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--dobato-pink);
+  filter: blur(4px);
+  animation: float 4s ease-in-out infinite;
+}
+
+/* 2. Story / Divider Elements */
+.path-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2.5rem 0;
+}
+
+.path-divider-line {
+  height: 1px;
+  width: 120px;
+  background: linear-gradient(90deg, transparent, rgba(244, 114, 182, 0.5), transparent);
+}
+
+.path-divider-node {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  box-shadow: 0 0 12px var(--dobato-pink);
+}
+
+/* 3. Split Layout for Meaning of DOBATO */
+.meaning-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .meaning-split-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.meaning-visual-card {
+  position: relative;
+  background: var(--gradient-surface);
+  border: 1px solid var(--glass-border-dark);
+  border-radius: var(--radius-xl);
+  padding: 3rem 2rem;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+/* 4. Timeline Graphic */
+.timeline-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  position: relative;
+  margin-top: 3.5rem;
+}
+
+@media (max-width: 900px) {
+  .timeline-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 540px) {
+  .timeline-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.timeline-card {
+  position: relative;
+  background: rgba(34, 16, 43, 0.7);
+  border: 1px solid rgba(244, 114, 182, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  transition: all var(--transition-normal);
+}
+
+.timeline-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--dobato-pink);
+  box-shadow: var(--shadow-glow);
+}
+
+.timeline-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  background: rgba(244, 114, 182, 0.12);
+  color: var(--dobato-pink);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 0.75rem;
+}
+
+/* 5. Prize Highlight Grid */
+.prize-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+@media (max-width: 992px) {
+  .prize-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.prize-card-featured {
+  background: linear-gradient(180deg, rgba(62, 20, 80, 0.9) 0%, rgba(26, 12, 34, 0.95) 100%);
+  border: 2px solid var(--dobato-pink);
+  box-shadow: 0 0 35px rgba(244, 114, 182, 0.25);
+  transform: scale(1.04);
+}
+
+@media (max-width: 992px) {
+  .prize-card-featured {
+    transform: none;
+  }
+}
+
+/* 6. Feature List Grid */
+.features-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+/* 7. Poetry Section Grid with Performance Imagery */
+.poetry-section-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .poetry-section-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.poetry-image-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid rgba(244, 114, 182, 0.25);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 30px rgba(244, 114, 182, 0.15);
+  background: #120718;
+}
+
+.poetry-section-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.poetry-image-card:hover .poetry-section-img {
+  transform: scale(1.05);
+}
+
+.poetry-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(22, 10, 29, 0.1) 0%, rgba(22, 10, 29, 0.7) 100%);
+  pointer-events: none;
+}
+
+.poetry-image-badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: rgba(22, 10, 29, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(244, 114, 182, 0.3);
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* 8. Music Section Grid with Live Performance Imagery */
+.music-section-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .music-section-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+.music-image-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid rgba(217, 70, 239, 0.25);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 30px rgba(217, 70, 239, 0.15);
+  background: #120718;
+}
+
+.music-section-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.music-image-card:hover .music-section-img {
+  transform: scale(1.05);
+}
+
+.music-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(22, 10, 29, 0.1) 0%, rgba(22, 10, 29, 0.7) 100%);
+  pointer-events: none;
+}
+
+.music-image-badge {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: rgba(22, 10, 29, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(217, 70, 239, 0.3);
+  color: #FFFFFF;
+  font-size: 0.8rem;
+  font-weight: 600;
+}

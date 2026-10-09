@@ -1,0 +1,15 @@
+# DOBATO Official Production Robots.txt
+
+User-agent: *
+Allow: /
+Allow: /event
+Allow: /poetry
+Allow: /register
+
+# Exclude private, transactional, and admin routes
+Disallow: /admin/
+Disallow: /admin/*
+Disallow: /thank-you
+Disallow: /verify
+
+Sitemap: https://dobato.app/sitemap.xml

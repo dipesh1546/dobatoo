@@ -1,0 +1,41 @@
+.dobato-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (max-width: 400px) {
+  .dobato-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .dobato-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.dobato-container-sm {
+  max-width: 640px;
+}
+
+.dobato-container-md {
+  max-width: 768px;
+}
+
+.dobato-container-lg {
+  max-width: 1024px;
+}
+
+.dobato-container-xl {
+  max-width: 1280px;
+}
+
+.dobato-container-full {
+  max-width: 100%;
+}

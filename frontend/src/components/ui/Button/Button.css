@@ -1,0 +1,134 @@
+/* DOBATO Reusable Button Styles */
+
+.dobato-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+
+.dobato-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Button Variants */
+.dobato-btn-primary {
+  background: var(--gradient-primary);
+  color: var(--dobato-white);
+  box-shadow: 0 4px 20px rgba(217, 70, 239, 0.3);
+}
+
+.dobato-btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(217, 70, 239, 0.45);
+  filter: brightness(1.08);
+}
+
+.dobato-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.dobato-btn-secondary {
+  background: var(--gradient-romantic);
+  color: var(--dobato-white);
+  box-shadow: 0 4px 16px rgba(236, 72, 153, 0.25);
+}
+
+.dobato-btn-secondary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(236, 72, 153, 0.4);
+}
+
+.dobato-btn-outline {
+  background: transparent;
+  color: var(--dobato-white);
+  border-color: rgba(244, 114, 182, 0.35);
+  backdrop-filter: blur(8px);
+}
+
+.dobato-btn-outline:hover:not(:disabled) {
+  background: rgba(244, 114, 182, 0.1);
+  border-color: var(--dobato-pink);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(244, 114, 182, 0.2);
+}
+
+.dobato-btn-ghost {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.dobato-btn-ghost:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--dobato-white);
+}
+
+.dobato-btn-dark {
+  background: var(--dobato-plum);
+  color: var(--dobato-white);
+  border: 1px solid rgba(244, 114, 182, 0.2);
+}
+
+.dobato-btn-dark:hover:not(:disabled) {
+  background: #4a174f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Button Sizes */
+.dobato-btn-sm {
+  padding: 0.45rem 1rem;
+  font-size: 0.85rem;
+
+}
+
+.dobato-btn-md {
+  padding: 0.7rem 1.6rem;
+  font-size: 0.95rem;
+}
+
+.dobato-btn-lg {
+  padding: 0.95rem 2.2rem;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 480px) {
+  .dobato-btn-lg {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+.dobato-btn-full {
+  width: 100%;
+}
+
+/* Spinner inside button */
+.dobato-btn-spinner {
+  width: 1.1rem;
+  height: 1.1rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--dobato-white);
+  border-radius: 50%;
+  animation: dobato-spin 0.8s linear infinite;
+}
+
+@keyframes dobato-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

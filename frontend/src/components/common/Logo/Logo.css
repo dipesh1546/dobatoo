@@ -1,0 +1,88 @@
+/* DOBATO Logo Styles */
+
+.dobato-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  user-select: none;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.dobato-logo:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.dobato-logo-img {
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+.dobato-logo-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dobato-logo-svg {
+  height: auto;
+  overflow: visible;
+}
+
+.dobato-logo-text-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dobato-logo-wordmark {
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-extrabold);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.dobato-logo-wordmark-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dobato-logo-wordmark-light {
+  color: var(--dobato-white);
+}
+
+.dobato-logo-wordmark-dark {
+  color: var(--dobato-plum);
+}
+
+.dobato-logo-tagline {
+  font-size: 0.65rem;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.04em;
+  color: var(--dobato-muted);
+  margin-top: 0.2rem;
+  white-space: nowrap;
+}
+
+/* Size Variants */
+.dobato-logo-sm .dobato-logo-wordmark {
+  font-size: 1.15rem;
+}
+
+.dobato-logo-md .dobato-logo-wordmark {
+  font-size: 1.5rem;
+}
+
+.dobato-logo-lg .dobato-logo-wordmark {
+  font-size: 2rem;
+}
+
+.dobato-logo-xl .dobato-logo-wordmark {
+  font-size: 2.75rem;
+}

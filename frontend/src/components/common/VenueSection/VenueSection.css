@@ -1,0 +1,221 @@
+/* DOBATO Confirmed Venue Section Styles */
+
+.venue-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.venue-two-col-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+/* Left: Dedicated Venue Image Card */
+.venue-visual-col {
+  width: 100%;
+}
+
+.venue-image-card {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background: var(--glass-bg-dark);
+  border: 1px solid rgba(244, 114, 182, 0.25);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), 0 0 45px rgba(244, 114, 182, 0.18);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.venue-image-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), 0 0 55px rgba(244, 114, 182, 0.28);
+  border-color: rgba(244, 114, 182, 0.45);
+}
+
+.venue-image-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #120718;
+}
+
+.venue-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.venue-img-loaded {
+  opacity: 1;
+}
+
+.venue-image-card:hover .venue-img {
+  transform: scale(1.04);
+}
+
+.venue-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(22, 10, 29, 0.1) 0%, rgba(22, 10, 29, 0.5) 60%, rgba(22, 10, 29, 0.85) 100%);
+  pointer-events: none;
+}
+
+.venue-floating-badge {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-full);
+  background: rgba(22, 10, 29, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(244, 114, 182, 0.3);
+  color: #FFFFFF;
+  font-size: 0.825rem;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.venue-fallback-card {
+  aspect-ratio: 4 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  padding: 2.5rem;
+  background: rgba(34, 16, 43, 0.7);
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+/* Right: Venue Content Column */
+.venue-content-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.venue-badge {
+  margin-bottom: 1.25rem;
+}
+
+.venue-title {
+  font-size: clamp(2.25rem, 4vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+}
+
+.venue-address-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+  color: var(--dobato-white);
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.venue-pin-icon {
+  flex-shrink: 0;
+}
+
+.venue-address-text {
+  color: #FFFFFF;
+  letter-spacing: 0.01em;
+}
+
+.venue-description-text {
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.65;
+  margin: 0 0 1.5rem 0;
+  font-size: 1.1rem;
+  max-width: 520px;
+}
+
+.venue-date-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.1rem;
+  border-radius: var(--radius-full);
+  background: rgba(244, 114, 182, 0.12);
+  border: 1px solid rgba(244, 114, 182, 0.25);
+  color: var(--dobato-pink);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.venue-cta-wrap {
+  width: auto;
+}
+
+.venue-map-link {
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Mobile & Tablet Responsiveness */
+@media (max-width: 900px) {
+  .venue-two-col-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .venue-image-wrapper {
+    aspect-ratio: 16 / 10;
+  }
+
+  .venue-content-col {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .venue-title {
+    font-size: clamp(2rem, 6vw, 2.75rem);
+  }
+
+  .venue-address-row {
+    font-size: 1.05rem;
+  }
+
+  .venue-description-text {
+    font-size: 1rem;
+  }
+
+  .venue-cta-wrap {
+    width: 100%;
+  }
+
+  .venue-map-link {
+    width: 100%;
+  }
+
+  .venue-map-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .venue-floating-badge {
+    bottom: 0.85rem;
+    left: 0.85rem;
+    font-size: 0.75rem;
+    padding: 0.35rem 0.75rem;
+  }
+}
+

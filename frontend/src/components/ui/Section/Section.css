@@ -1,0 +1,68 @@
+.dobato-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Padding Variants */
+.dobato-section-pad-none {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.dobato-section-pad-sm {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.dobato-section-pad-md {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.dobato-section-pad-lg {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.dobato-section-pad-xl {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+@media (max-width: 768px) {
+  .dobato-section-pad-lg {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  .dobato-section-pad-xl {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* Background Variants */
+.dobato-section-dark {
+  background-color: var(--dobato-dark);
+}
+
+.dobato-section-plum {
+  background-color: var(--dobato-plum);
+}
+
+.dobato-section-gradient {
+  background: var(--gradient-surface);
+}
+
+.dobato-section-soft {
+  background-color: rgba(255, 247, 252, 0.03);
+}
+
+.dobato-section-glass {
+  background: var(--glass-bg-dark);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-top: 1px solid var(--glass-border-dark);
+  border-bottom: 1px solid var(--glass-border-dark);
+}
