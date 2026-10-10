@@ -12,8 +12,8 @@ export const NotFoundPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="Page Not Found — DOBATO"
-        description="Looks like this path doesn't lead anywhere. Return to DOBATO to explore poetry, music, and meaningful connections."
+        title="Page Not Found — Dobatoo"
+        description="Looks like this path doesn't lead anywhere. Return to Dobatoo to explore poetry, music, and meaningful connections."
       />
 
       <Section variant="dark" padding="xl" style={{ paddingTop: '10rem', minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
@@ -50,7 +50,7 @@ export const NotFoundPage: React.FC = () => {
 
             <Link to="/event">
               <Button variant="outline" size="lg" icon={<Compass size={18} />}>
-                Explore DOBATO
+                Explore Dobatoo
               </Button>
             </Link>
           </div>

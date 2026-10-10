@@ -13,7 +13,7 @@ export const adminEventService = {
       if (response.success && response.data) {
         const raw = response.data;
         const mapped: EventStats = {
-          title: raw.title || 'DOBATO GRAND LAUNCH',
+          title: raw.title || 'DOBATOO GRAND LAUNCH',
           date: raw.eventDate
             ? new Date(raw.eventDate).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })
             : (raw.date || '16 October 2026'),

@@ -210,26 +210,63 @@ export const AdminPoetryScoringPage: React.FC = () => {
       {activeParticipant && (
         <div className="admin-card">
           {/* Active Entry Header */}
-          <div style={{ borderBottom: '1px solid #e2e8f0', paddingBottom: '1rem', marginBottom: '1.25rem' }}>
-            <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#7c3aed', fontFamily: 'monospace' }}>
-              REGISTRATION ID: {activeParticipant.registrationId}
-            </span>
-            <h3 style={{ fontSize: '1.375rem', fontWeight: 800, color: '#0f172a', margin: '0.25rem 0' }}>
-              {activeParticipant.poetryTitle}
-            </h3>
-            <div style={{ fontSize: '0.875rem', color: '#475569' }}>
-              Performer: <strong>{activeParticipant.participantName}</strong> • {activeParticipant.language} • {activeParticipant.performanceType.replace('_', ' ')}
-              {existingScore && (
-                <span style={{ marginLeft: '0.75rem', fontSize: '0.75rem', color: '#6b21a8', fontStyle: 'italic' }}>
-                  (Last updated: {new Date(existingScore.updatedAt).toLocaleTimeString()})
-                </span>
+          <div style={{ borderBottom: '1px solid #e2e8f0', paddingBottom: '1rem', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            {activeParticipant.photoUrl ? (
+              <a href={activeParticipant.photoUrl} target="_blank" rel="noopener noreferrer" title="View performer photo">
+                <img
+                  src={activeParticipant.photoUrl}
+                  alt={activeParticipant.participantName}
+                  style={{
+                    width: '54px',
+                    height: '54px',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    border: '2px solid #7c3aed',
+                    flexShrink: 0,
+                  }}
+                />
+              </a>
+            ) : (
+              <div
+                style={{
+                  width: '54px',
+                  height: '54px',
+                  borderRadius: '50%',
+                  backgroundColor: '#f1f5f9',
+                  color: '#64748b',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.25rem',
+                  fontWeight: 800,
+                  border: '1px solid #e2e8f0',
+                  flexShrink: 0,
+                }}
+              >
+                {activeParticipant.participantName ? activeParticipant.participantName.charAt(0).toUpperCase() : '?'}
+              </div>
+            )}
+            <div style={{ flex: 1 }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 800, color: '#7c3aed', fontFamily: 'monospace' }}>
+                REGISTRATION ID: {activeParticipant.registrationId}
+              </span>
+              <h3 style={{ fontSize: '1.375rem', fontWeight: 800, color: '#0f172a', margin: '0.25rem 0' }}>
+                {activeParticipant.poetryTitle}
+              </h3>
+              <div style={{ fontSize: '0.875rem', color: '#475569' }}>
+                Performer: <strong>{activeParticipant.participantName}</strong> • {activeParticipant.language} • {activeParticipant.performanceType.replace('_', ' ')}
+                {existingScore && (
+                  <span style={{ marginLeft: '0.75rem', fontSize: '0.75rem', color: '#6b21a8', fontStyle: 'italic' }}>
+                    (Last updated: {new Date(existingScore.updatedAt).toLocaleTimeString()})
+                  </span>
+                )}
+              </div>
+              {activeParticipant.description && (
+                <p style={{ fontSize: '0.875rem', color: '#64748b', marginTop: '0.35rem', fontStyle: 'italic', margin: '0.35rem 0 0 0' }}>
+                  "{activeParticipant.description}"
+                </p>
               )}
             </div>
-            {activeParticipant.description && (
-              <p style={{ fontSize: '0.875rem', color: '#64748b', marginTop: '0.5rem', fontStyle: 'italic' }}>
-                "{activeParticipant.description}"
-              </p>
-            )}
           </div>
 
           {msg && (

@@ -9,10 +9,12 @@ import {
   ChevronDown,
   ChevronUp,
   Save,
+  CreditCard,
 } from 'lucide-react';
 import type { PoetryParticipantDetail, ReviewStatus } from '../../types/poetryJudging';
 import { poetryAdminService } from '../../services/admin/poetryAdminService';
 import { PoetryNavTabs } from '../../components/admin/PoetryNavTabs';
+import { ParticipantIdCardModal } from '../../components/admin/idCard';
 
 export const AdminPoetryDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -30,6 +32,7 @@ export const AdminPoetryDetailPage: React.FC = () => {
 
   // Expandable Personal Details section
   const [showPersonal, setShowPersonal] = useState(false);
+  const [showCardModal, setShowCardModal] = useState(false);
 
   useEffect(() => {
     async function fetchDetail() {
@@ -103,18 +106,29 @@ export const AdminPoetryDetailPage: React.FC = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', maxWidth: '800px' }}>
       {/* Action Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
         <button className="admin-btn admin-btn-secondary" onClick={() => navigate('/admin/poetry')}>
           <ArrowLeft size={16} />
           <span>Back to Dashboard</span>
         </button>
 
-        <button
-          className="admin-btn admin-btn-primary"
-          onClick={() => navigate(`/admin/poetry/scoring?participantId=${participant.id}`)}
-        >
-          <span>Score This Performance</span>
-        </button>
+        <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+          <button
+            className="admin-btn admin-btn-secondary"
+            onClick={() => setShowCardModal(true)}
+            style={{ borderColor: '#ec4899', color: '#db2777', fontWeight: 700 }}
+          >
+            <CreditCard size={15} color="#ec4899" />
+            <span>View & Print ID Card</span>
+          </button>
+
+          <button
+            className="admin-btn admin-btn-primary"
+            onClick={() => navigate(`/admin/poetry/scoring?participantId=${participant.id}`)}
+          >
+            <span>Score This Performance</span>
+          </button>
+        </div>
       </div>
 
       <PoetryNavTabs />
@@ -133,30 +147,74 @@ export const AdminPoetryDetailPage: React.FC = () => {
             gap: '1rem',
           }}
         >
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span style={{ fontFamily: 'monospace', fontSize: '0.875rem', fontWeight: 800, color: '#7c3aed' }}>
-                {participant.registrationId}
-              </span>
-              <span
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            {participant.photoUrl ? (
+              <a
+                href={participant.photoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Click to view full uploaded photo"
+                style={{ display: 'inline-flex' }}
+              >
+                <img
+                  src={participant.photoUrl}
+                  alt={participant.participantName}
+                  style={{
+                    width: '64px',
+                    height: '64px',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    border: '3px solid #7c3aed',
+                    boxShadow: '0 4px 10px rgba(124, 58, 237, 0.15)',
+                    flexShrink: 0,
+                  }}
+                />
+              </a>
+            ) : (
+              <div
                 style={{
-                  fontSize: '0.75rem',
+                  width: '64px',
+                  height: '64px',
+                  borderRadius: '50%',
+                  backgroundColor: '#f1f5f9',
+                  color: '#64748b',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.5rem',
                   fontWeight: 800,
-                  padding: '0.2rem 0.6rem',
-                  borderRadius: '4px',
-                  backgroundColor: '#fdf2f8',
-                  color: '#db2777',
-                  border: '1px solid #fbcfe8',
+                  border: '2px dashed #cbd5e1',
+                  flexShrink: 0,
                 }}
               >
-                THEME: DOBATO
-              </span>
-            </div>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a', margin: '0.375rem 0 0 0' }}>
-              {participant.poetryTitle}
-            </h2>
-            <div style={{ fontSize: '1rem', fontWeight: 600, color: '#475569', marginTop: '0.25rem' }}>
-              Performer: {participant.participantName}
+                {participant.participantName ? participant.participantName.charAt(0).toUpperCase() : '?'}
+              </div>
+            )}
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ fontFamily: 'monospace', fontSize: '0.875rem', fontWeight: 800, color: '#7c3aed' }}>
+                  {participant.registrationId}
+                </span>
+                <span
+                  style={{
+                    fontSize: '0.75rem',
+                    fontWeight: 800,
+                    padding: '0.2rem 0.6rem',
+                    borderRadius: '4px',
+                    backgroundColor: '#fdf2f8',
+                    color: '#db2777',
+                    border: '1px solid #fbcfe8',
+                  }}
+                >
+                  THEME: DOBATO
+                </span>
+              </div>
+              <h2 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a', margin: '0.375rem 0 0 0' }}>
+                {participant.poetryTitle}
+              </h2>
+              <div style={{ fontSize: '1rem', fontWeight: 600, color: '#475569', marginTop: '0.25rem' }}>
+                Performer: {participant.participantName}
+              </div>
             </div>
           </div>
 
@@ -381,10 +439,40 @@ export const AdminPoetryDetailPage: React.FC = () => {
                   {participant.personalDetails.city}
                 </div>
               </div>
+
+              {participant.photoUrl && (
+                <div>
+                  <div style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>PHOTO (GIVEAWAY)</div>
+                  <div style={{ marginTop: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <a href={participant.photoUrl} target="_blank" rel="noopener noreferrer">
+                      <img
+                        src={participant.photoUrl}
+                        alt="Performer"
+                        style={{ width: '40px', height: '40px', borderRadius: '6px', objectFit: 'cover', border: '1px solid #cbd5e1' }}
+                      />
+                    </a>
+                    <a
+                      href={participant.photoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ fontSize: '0.8125rem', color: '#7c3aed', textDecoration: 'underline', fontWeight: 600 }}
+                    >
+                      View Photo ↗
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>
       </div>
+
+      {/* Participant ID Card Modal */}
+      <ParticipantIdCardModal
+        isOpen={showCardModal}
+        onClose={() => setShowCardModal(false)}
+        participant={participant}
+      />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import * as bcrypt from 'bcryptjs';
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log('🌱 Starting DOBATO Production Clean & Seed...');
+  console.log('🌱 Starting Dobatoo Production Clean & Seed...');
 
   // ============================================================
   // 1. CLEAR ALL TRANSACTIONAL & TEST DATA
@@ -32,12 +32,12 @@ async function main() {
   const event = await prisma.event.upsert({
     where: { slug: eventSlug },
     update: {
-      title: 'DOBATO GRAND LAUNCH',
+      title: 'DOBATOO GRAND LAUNCH',
       description:
         'An open mic evening of poetry, music, storytelling, and celebrating meaningful connection.',
       slogan: 'Two Paths. One Connection.',
       secondarySlogan: 'Where Paths Cross, Stories Begin.',
-      poetryTheme: 'DOBATO',
+      poetryTheme: 'Searching / Finding the Right Person',
       eventDate,
       timezone: 'Asia/Kathmandu',
       location: 'Kathmandu, Nepal',
@@ -46,13 +46,13 @@ async function main() {
       isActive: true,
     },
     create: {
-      title: 'DOBATO GRAND LAUNCH',
+      title: 'DOBATOO GRAND LAUNCH',
       slug: eventSlug,
       description:
         'An open mic evening of poetry, music, storytelling, and celebrating meaningful connection.',
       slogan: 'Two Paths. One Connection.',
       secondarySlogan: 'Where Paths Cross, Stories Begin.',
-      poetryTheme: 'DOBATO',
+      poetryTheme: 'Searching / Finding the Right Person',
       eventDate,
       timezone: 'Asia/Kathmandu',
       location: 'Kathmandu, Nepal',
@@ -73,7 +73,7 @@ async function main() {
     {
       title: 'POETRY',
       description:
-        'Express your emotions through words on the official theme: "DOBATO — जहाँ दुई बाटो भेटिन्छन्".',
+        'Express your emotions through words on the official theme: "Searching / Finding the Right Person (जहाँ दुई बाटो भेटिन्छन्)".',
       iconKey: 'poetry',
       displayOrder: 1,
     },
@@ -94,7 +94,7 @@ async function main() {
     {
       title: 'PRIZES',
       description:
-        'Exciting awards, cash prizes, official DOBATO merchandise, and platform privileges.',
+        'Exciting awards, cash prizes, official Dobatoo merchandise, and platform privileges.',
       iconKey: 'trophy',
       displayOrder: 4,
     },
@@ -120,11 +120,11 @@ async function main() {
     {
       position: 1,
       title: 'First Prize',
-      cashAmount: 3000,
+      cashAmount: 2500,
       currency: 'NPR',
       benefits: [
-        'Lifetime Free DOBATO Access',
-        'Official DOBATO T-shirt',
+        'Lifetime Free Dobatoo Access',
+        'Official Dobatoo T-shirt',
         'Winner Trophy & Certificate',
       ],
       displayOrder: 1,
@@ -132,11 +132,11 @@ async function main() {
     {
       position: 2,
       title: 'Second Prize',
-      cashAmount: 2000,
+      cashAmount: 1000,
       currency: 'NPR',
       benefits: [
-        '6 Months Free DOBATO Access',
-        'Official DOBATO T-shirt',
+        '6 Months Free Dobatoo Access',
+        'Official Dobatoo T-shirt',
         'Runner-up Trophy & Certificate',
       ],
       displayOrder: 2,
@@ -147,8 +147,8 @@ async function main() {
       cashAmount: null,
       currency: 'NPR',
       benefits: [
-        '3 Months Free DOBATO Access',
-        'Official DOBATO T-shirt',
+        '3 Months Free Dobatoo Access',
+        'Official Dobatoo T-shirt',
         'Certificate of Recognition',
       ],
       displayOrder: 3,
@@ -167,7 +167,7 @@ async function main() {
   console.log(`✅ Seeded ${prizesData.length} prizes.`);
 
   // ============================================================
-  // 5. POETRY COMPETITION (THEME: DOBATO)
+  // 5. POETRY COMPETITION (THEME: Searching / Finding the Right Person)
   // ============================================================
   const existingCompetition = await prisma.poetryCompetition.findFirst({
     where: { eventId: event.id },
@@ -178,10 +178,10 @@ async function main() {
     competition = await prisma.poetryCompetition.update({
       where: { id: existingCompetition.id },
       data: {
-        title: 'DOBATO Poetry Competition',
-        theme: 'DOBATO',
+        title: 'Dobatoo Poetry Competition',
+        theme: 'Searching / Finding the Right Person',
         description:
-          'The DOBATO Poetry Competition invites poets and performers to interpret the concept of intersecting journeys and human connection — जहाँ दुई बाटो भेटिन्छन्।',
+          'The Dobatoo Poetry Competition invites poets and performers to interpret the concept of searching and finding the right person — जहाँ दुई बाटो भेटिन्छन्।',
         isOpen: true,
         status: CompetitionStatus.OPEN,
       },
@@ -190,10 +190,10 @@ async function main() {
     competition = await prisma.poetryCompetition.create({
       data: {
         eventId: event.id,
-        title: 'DOBATO Poetry Competition',
-        theme: 'DOBATO',
+        title: 'Dobatoo Poetry Competition',
+        theme: 'Searching / Finding the Right Person',
         description:
-          'The DOBATO Poetry Competition invites poets and performers to interpret the concept of intersecting journeys and human connection — जहाँ दुई बाटो भेटिन्छन्।',
+          'The Dobatoo Poetry Competition invites poets and performers to interpret the concept of searching and finding the right person — जहाँ दुई बाटो भेटिन्छन्।',
         isOpen: true,
         status: CompetitionStatus.OPEN,
       },
@@ -219,7 +219,7 @@ async function main() {
     {
       title: 'Theme Alignment',
       description:
-        'Performances must reflect the official theme: "DOBATO — Two Paths. One Connection."',
+        'Performances must reflect the official theme: "Searching / Finding the Right Person — Dobatoo".',
       displayOrder: 2,
     },
     {
@@ -264,7 +264,7 @@ async function main() {
     {
       name: 'Content & Theme Depth',
       title: 'Theme Relevance & Depth',
-      description: 'Relevance to the DOBATO theme, depth of thought, and imagery.',
+      description: 'Relevance to the Searching / Finding the Right Person theme, depth of thought, and imagery.',
       weight: 25,
       maxScore: 10,
       displayOrder: 1,
@@ -314,14 +314,14 @@ async function main() {
   const faqsData = [
     {
       question: 'Is registration free?',
-      answer: 'Yes! Registration for the DOBATO Grand Launch is 100% free of charge.',
+      answer: 'Yes! Registration for the Dobatoo Grand Launch is 100% free of charge.',
       displayOrder: 1,
       isPublished: true,
     },
     {
       question: 'What is the official poetry theme?',
       answer:
-        'The official poetry theme is strictly "DOBATO" — Two Paths. One Connection (जहाँ दुई बाटो भेटिन्छन्).',
+        'The official poetry theme is "Searching / Finding the Right Person" (जहाँ दुई बाटो भेटिन्छन्).',
       displayOrder: 2,
       isPublished: true,
     },
@@ -380,7 +380,7 @@ async function main() {
   const superAdminEmail =
     process.env.SUPERADMIN_EMAIL ||
     process.env.ADMIN_EMAIL ||
-    'superadmin@dobato.app';
+    'superadmin@dobatoo.app';
 
   const adminPassword =
     process.env.ADMIN_PASSWORD ||
@@ -392,13 +392,13 @@ async function main() {
   const admin = await prisma.adminUser.upsert({
     where: { email: superAdminEmail },
     update: {
-      name: 'DOBATO Super Admin',
+      name: 'Dobatoo Super Admin',
       passwordHash: hashedPassword,
       role: Role.SUPER_ADMIN,
       isActive: true,
     },
     create: {
-      name: 'DOBATO Super Admin',
+      name: 'Dobatoo Super Admin',
       email: superAdminEmail,
       passwordHash: hashedPassword,
       role: Role.SUPER_ADMIN,
@@ -410,7 +410,7 @@ async function main() {
 
   console.log('');
   console.log('==============================================');
-  console.log('🎉 DOBATO PRODUCTION BASELINE READY');
+  console.log('🎉 DOBATOO PRODUCTION BASELINE READY');
   console.log('==============================================');
   console.log(`Event: ${event.title} (${event.slug})`);
   console.log(`Theme: ${competition.theme}`);

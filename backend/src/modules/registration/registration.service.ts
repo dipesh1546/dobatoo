@@ -15,7 +15,7 @@ import {
 } from './dto/registration-response.dto';
 import { ParticipationType, DiscoverySource, PerformanceType, Prisma } from '@prisma/client';
 
-export const FIXED_POETRY_TOPIC = 'DOBATO';
+export const FIXED_POETRY_TOPIC = 'Searching / Finding the Right Person';
 
 @Injectable()
 export class RegistrationService {
@@ -74,12 +74,21 @@ export class RegistrationService {
       }
     }
 
-    // 5. Poetry Topic Validation - Fixed to DOBATO
+    // 5. Poetry Topic Validation - Fixed to Searching / Finding the Right Person
     const rawTopic = dto.topic || dto.poetry?.topic;
-    if (rawTopic && rawTopic.trim().toUpperCase() !== FIXED_POETRY_TOPIC) {
-      throw new BadRequestException(
-        `Invalid poetry topic "${rawTopic}". The only accepted topic is "${FIXED_POETRY_TOPIC}".`,
-      );
+    if (rawTopic) {
+      const normalizedRaw = rawTopic.replace(/\s+/g, ' ').trim().toUpperCase();
+      const normalizedExpected = FIXED_POETRY_TOPIC.replace(/\s+/g, ' ').trim().toUpperCase();
+      const validTopics = [
+        normalizedExpected,
+        'SEARCHING/FINDING THE RIGHT PERSON',
+        'DOBATO',
+      ];
+      if (!validTopics.includes(normalizedRaw)) {
+        throw new BadRequestException(
+          `Invalid poetry topic "${rawTopic}". The only accepted topic is "${FIXED_POETRY_TOPIC}".`,
+        );
+      }
     }
 
     // 6. Conditional Performance & Stage Introduction Validation
@@ -186,6 +195,7 @@ export class RegistrationService {
             age: dto.age ?? null,
             city: dto.city ? dto.city.trim() : null,
             gender: dto.gender ? dto.gender.trim() : null,
+            photoUrl: dto.photoUrl ? dto.photoUrl.trim() : null,
             participationType: dto.participationType,
             discoverySource: dto.discoverySource,
             discoverySourceOther: dto.discoverySourceOther ? dto.discoverySourceOther.trim() : null,

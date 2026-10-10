@@ -71,11 +71,11 @@ export const AdminLoginPage: React.FC = () => {
           <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
             <img
               src="/favicon.png"
-              alt="DOBATO"
+              alt="Dobatoo"
               style={{ width: '48px', height: '48px', borderRadius: '12px', objectFit: 'contain' }}
             />
-            <span style={{ fontSize: '1.75rem', fontWeight: 800, background: 'linear-gradient(135deg, #EC4899 0%, #A855F7 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', letterSpacing: '-0.02em', textTransform: 'uppercase' }}>
-              DOBATO
+            <span style={{ fontSize: '1.75rem', fontWeight: 900, background: 'linear-gradient(135deg, #EC4899 0%, #A855F7 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', letterSpacing: '-0.02em', textTransform: 'uppercase' }}>
+              DOBATO<span className="dobatoo-accent-o">O</span>
             </span>
           </div>
           <h1 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0f172a', margin: 0 }}>
@@ -190,7 +190,7 @@ export const AdminLoginPage: React.FC = () => {
             color: '#64748b',
           }}
         >
-          Secure access for authorized DOBATO organizers.
+          Secure access for authorized Dobatoo organizers.
         </div>
       </div>
     </div>

@@ -342,7 +342,7 @@ export const AdminUsersPage: React.FC = () => {
                   Add Admin User
                 </h3>
                 <p style={{ fontSize: '0.8rem', color: '#64748b', marginTop: '0.2rem' }}>
-                  Grant administrative access to DOBATO organizer portal
+                  Grant administrative access to Dobatoo organizer portal
                 </p>
               </div>
               <button

@@ -34,7 +34,7 @@ export const IntroductionSection: React.FC = () => {
             And sometimes, two completely different paths cross at exactly the right moment.
           </p>
           <p style={{ fontWeight: 600, color: 'var(--dobato-white)' }}>
-            That moment is DOBATO.
+            That moment is <span className="dobatoo-brand-styled">Dobato<span className="dobatoo-brand-accent-oo">o</span></span>.
           </p>
         </div>
 

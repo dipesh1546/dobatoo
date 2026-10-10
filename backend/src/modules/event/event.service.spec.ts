@@ -28,7 +28,7 @@ describe('EventService (Phase 3)', () => {
         id: 'p1',
         position: 1,
         title: 'First Prize',
-        cashAmount: 3000,
+        cashAmount: 2500,
         currency: 'NPR',
         benefits: ['Lifetime Free DOBATO Access', '1 T-shirt', '1 Award'],
         displayOrder: 1,
@@ -37,7 +37,7 @@ describe('EventService (Phase 3)', () => {
         id: 'p2',
         position: 2,
         title: 'Second Prize',
-        cashAmount: 2000,
+        cashAmount: 1000,
         currency: 'NPR',
         benefits: ['6 Months Free DOBATO Access', '1 T-shirt', '1 Award'],
         displayOrder: 2,
@@ -105,10 +105,10 @@ describe('EventService (Phase 3)', () => {
       expect(result.performances).toHaveLength(1);
 
       expect(result.prizes).toHaveLength(3);
-      expect(result.prizes[0].cashAmount).toBe(3000);
-      expect(result.prizes[0].cashPrize).toBe(3000);
-      expect(result.prizes[1].cashAmount).toBe(2000);
-      expect(result.prizes[1].cashPrize).toBe(2000);
+      expect(result.prizes[0].cashAmount).toBe(2500);
+      expect(result.prizes[0].cashPrize).toBe(2500);
+      expect(result.prizes[1].cashAmount).toBe(1000);
+      expect(result.prizes[1].cashPrize).toBe(1000);
       expect(result.prizes[2].cashAmount).toBeNull();
       expect(result.prizes[2].cashPrize).toBeNull();
       expect(result.prizes[2].benefits).toEqual([

@@ -13,7 +13,7 @@ interface ServiceUnavailableProps {
 
 export const ServiceUnavailable: React.FC<ServiceUnavailableProps> = ({
   onRetry = () => window.location.reload(),
-  title = 'DOBATO is temporarily unavailable.',
+  title = 'Dobatoo is temporarily unavailable.',
   message = 'We are performing scheduled maintenance or updating servers. Please try again shortly.',
 }) => {
   return (

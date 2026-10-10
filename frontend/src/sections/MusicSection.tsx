@@ -33,7 +33,7 @@ export const MusicSection: React.FC = () => {
               <div className="music-image-card">
                 <img
                   src="/images/event/music-performance.jpg"
-                  alt="DOBATO Live Acoustic Music Performance"
+                  alt="Dobatoo Live Acoustic Music Performance"
                   className="music-section-img"
                   loading="lazy"
                 />
@@ -67,7 +67,7 @@ export const MusicSection: React.FC = () => {
                 </h3>
 
                 <p className="text-body" style={{ margin: '0 0 1.75rem 0', lineHeight: '1.65' }}>
-                  We are curating acoustic artists and local performers to set the backdrop for the DOBATO Grand Launch. An intimate setting where melody and story intertwine.
+                  We are curating acoustic artists and local performers to set the backdrop for the Dobatoo Grand Launch. An intimate setting where melody and story intertwine.
                 </p>
 
                 <div

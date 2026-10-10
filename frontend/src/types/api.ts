@@ -18,6 +18,7 @@ export interface RegistrationPayload {
   email: string;
   phone: string;
   gender?: GenderType;
+  photoUrl?: string;
   participationType: ParticipationType;
   discoverySource: DiscoverySource;
   discoverySourceOther?: string;
@@ -34,6 +35,7 @@ export interface RegistrationResponseData {
   emailSent?: boolean | null;
   fullName?: string;
   email?: string;
+  photoUrl?: string;
   participationType?: ParticipationType;
   performanceType?: PerformanceType;
   stageIntroductionName?: string;

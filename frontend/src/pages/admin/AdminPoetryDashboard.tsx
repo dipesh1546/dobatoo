@@ -12,10 +12,12 @@ import {
   Award,
   Copy,
   Check,
+  CreditCard,
 } from 'lucide-react';
 import type { PoetryParticipantDetail, PoetryStats } from '../../types/poetryJudging';
 import { poetryAdminService } from '../../services/admin/poetryAdminService';
 import { PoetryNavTabs } from '../../components/admin/PoetryNavTabs';
+import { ParticipantIdCardModal } from '../../components/admin/idCard';
 
 export const AdminPoetryDashboardPage: React.FC = () => {
   const navigate = useNavigate();
@@ -38,6 +40,8 @@ export const AdminPoetryDashboardPage: React.FC = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [showCardModal, setShowCardModal] = useState(false);
+  const [selectedForCard, setSelectedForCard] = useState<PoetryParticipantDetail | null>(null);
 
   // Debounce search
   useEffect(() => {
@@ -321,7 +325,52 @@ export const AdminPoetryDashboardPage: React.FC = () => {
                           </button>
                         </div>
                       </td>
-                      <td style={{ fontWeight: 700, color: '#0f172a' }}>{p.participantName}</td>
+                      <td style={{ fontWeight: 700, color: '#0f172a' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                          {p.photoUrl ? (
+                            <a
+                              href={p.photoUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="View uploaded photo"
+                              style={{ display: 'inline-flex' }}
+                            >
+                              <img
+                                src={p.photoUrl}
+                                alt=""
+                                style={{
+                                  width: '28px',
+                                  height: '28px',
+                                  borderRadius: '50%',
+                                  objectFit: 'cover',
+                                  border: '1.5px solid #cbd5e1',
+                                  flexShrink: 0,
+                                }}
+                              />
+                            </a>
+                          ) : (
+                            <div
+                              style={{
+                                width: '28px',
+                                height: '28px',
+                                borderRadius: '50%',
+                                backgroundColor: '#f1f5f9',
+                                color: '#64748b',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontSize: '0.75rem',
+                                fontWeight: 700,
+                                flexShrink: 0,
+                                border: '1px solid #e2e8f0',
+                              }}
+                            >
+                              {p.participantName ? p.participantName.charAt(0).toUpperCase() : '?'}
+                            </div>
+                          )}
+                          <span>{p.participantName}</span>
+                        </div>
+                      </td>
                       <td>
                         <span style={{ fontSize: '0.8rem', fontWeight: 800, color: '#db2777' }}>
                           DOBATO
@@ -379,14 +428,28 @@ export const AdminPoetryDashboardPage: React.FC = () => {
                         </span>
                       </td>
                       <td style={{ textAlign: 'right' }}>
-                        <button
-                          className="admin-btn admin-btn-secondary"
-                          style={{ height: '30px', padding: '0 0.65rem', fontSize: '0.75rem' }}
-                          onClick={() => navigate(`/admin/poetry/${p.id}`)}
-                        >
-                          <Eye size={13} />
-                          <span>Review</span>
-                        </button>
+                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                          <button
+                            className="admin-btn admin-btn-secondary"
+                            style={{ height: '30px', padding: '0 0.65rem', fontSize: '0.75rem', borderColor: '#fbcfe8', color: '#db2777' }}
+                            onClick={() => {
+                              setSelectedForCard(p);
+                              setShowCardModal(true);
+                            }}
+                            title="View & Print Performer ID Card"
+                          >
+                            <CreditCard size={13} color="#ec4899" />
+                            <span>ID Card</span>
+                          </button>
+                          <button
+                            className="admin-btn admin-btn-secondary"
+                            style={{ height: '30px', padding: '0 0.65rem', fontSize: '0.75rem' }}
+                            onClick={() => navigate(`/admin/poetry/${p.id}`)}
+                          >
+                            <Eye size={13} />
+                            <span>Review</span>
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   );
@@ -439,6 +502,16 @@ export const AdminPoetryDashboardPage: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Participant ID Card Modal */}
+      <ParticipantIdCardModal
+        isOpen={showCardModal}
+        onClose={() => {
+          setShowCardModal(false);
+          setSelectedForCard(null);
+        }}
+        participant={selectedForCard}
+      />
     </div>
   );
 };

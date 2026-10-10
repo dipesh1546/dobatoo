@@ -89,11 +89,13 @@ export const AdminLayout: React.FC = () => {
         <div className="admin-sidebar-brand">
           <img
             src="/favicon.png"
-            alt="DOBATO"
+            alt="Dobatoo"
             style={{ width: '34px', height: '34px', borderRadius: '8px', objectFit: 'contain' }}
           />
           <div>
-            <div className="admin-sidebar-brand-title">DOBATO Admin</div>
+            <div className="admin-sidebar-brand-title">
+              DOBATO<span className="dobatoo-accent-o">O</span> Admin
+            </div>
             <div className="admin-sidebar-brand-sub">Grand Launch 2026</div>
           </div>
         </div>

@@ -139,7 +139,7 @@ export const AdminDashboardPage: React.FC = () => {
             {getGreeting()}
           </h2>
           <p style={{ fontSize: '0.875rem', color: '#64748b', marginTop: '0.25rem' }}>
-            DOBATO Grand Launch • Open Mic participant overview
+            Dobatoo Grand Launch • Open Mic participant overview
           </p>
         </div>
         <button
@@ -262,7 +262,7 @@ export const AdminDashboardPage: React.FC = () => {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
             <div>
               <h3 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f172a', margin: 0 }}>
-                DOBATO Grand Launch
+                Dobatoo Grand Launch
               </h3>
               <p style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '0.2rem' }}>
                 Open Mic Event Overview
@@ -441,7 +441,7 @@ export const AdminDashboardPage: React.FC = () => {
               Recent Registrations
             </h3>
             <p style={{ fontSize: '0.75rem', color: '#64748b', margin: 0 }}>
-              Latest participants registered for DOBATO Open Mic
+              Latest participants registered for Dobatoo Open Mic
             </p>
           </div>
           <Link
@@ -506,7 +506,44 @@ export const AdminDashboardPage: React.FC = () => {
                           </button>
                         </div>
                       </td>
-                      <td style={{ fontWeight: 700, color: '#0f172a' }}>{reg.fullName}</td>
+                      <td style={{ fontWeight: 700, color: '#0f172a' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                          {reg.photoUrl ? (
+                            <img
+                              src={reg.photoUrl}
+                              alt=""
+                              style={{
+                                width: '28px',
+                                height: '28px',
+                                borderRadius: '50%',
+                                objectFit: 'cover',
+                                border: '1px solid #e2e8f0',
+                                flexShrink: 0,
+                              }}
+                            />
+                          ) : (
+                            <div
+                              style={{
+                                width: '28px',
+                                height: '28px',
+                                borderRadius: '50%',
+                                backgroundColor: '#f1f5f9',
+                                color: '#64748b',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                fontSize: '0.75rem',
+                                fontWeight: 700,
+                                flexShrink: 0,
+                                border: '1px solid #e2e8f0',
+                              }}
+                            >
+                              {reg.fullName ? reg.fullName.charAt(0).toUpperCase() : '?'}
+                            </div>
+                          )}
+                          <span>{reg.fullName}</span>
+                        </div>
+                      </td>
                       <td>
                         <span
                           style={{

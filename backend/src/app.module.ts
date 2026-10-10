@@ -10,6 +10,7 @@ import { PoetryModule } from './modules/poetry/poetry.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { PoetryJudgingModule } from './modules/poetry-judging/poetry-judging.module';
 import { MailModule } from './mail/mail.module';
+import { UploadModule } from './modules/upload/upload.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { MailModule } from './mail/mail.module';
     AdminModule,
     PoetryJudgingModule,
     MailModule,
+    UploadModule,
   ],
 })
 export class AppModule {}

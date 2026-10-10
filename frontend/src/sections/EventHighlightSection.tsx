@@ -34,7 +34,7 @@ export const EventHighlightSection: React.FC = () => {
           </Heading>
 
           <p className="text-body-lg" style={{ marginTop: '1rem' }}>
-            Come celebrate the beginning of DOBATO with an evening filled with poetry, music and people coming together from different paths.
+            Come celebrate the beginning of <span className="dobatoo-brand-styled">Dobato<span className="dobatoo-brand-accent-oo">o</span></span> with an evening filled with poetry, music and people coming together from different paths.
           </p>
         </div>
 

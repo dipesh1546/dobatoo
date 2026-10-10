@@ -9,8 +9,8 @@ interface SocialShareProps {
 }
 
 export const SocialShare: React.FC<SocialShareProps> = ({
-  title = 'Invite Friends to DOBATO',
-  shareText = 'Join the DOBATO Grand Launch on 16 October 2026 — an evening of poetry, music and meaningful connections. Two Paths. One Connection.',
+  title = 'Invite Friends to Dobatoo',
+  shareText = 'Join the Dobatoo Grand Launch on 16 October 2026 — an evening of poetry, music and meaningful connections. Two Paths. One Connection.',
   shareUrl = typeof window !== 'undefined' ? window.location.href : 'https://dobato.app',
 }) => {
   const [copied, setCopied] = useState(false);
@@ -29,7 +29,7 @@ export const SocialShare: React.FC<SocialShareProps> = ({
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'DOBATO Grand Launch',
+          title: 'Dobatoo Grand Launch',
           text: shareText,
           url: shareUrl,
         });

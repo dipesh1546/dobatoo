@@ -150,7 +150,7 @@ export const adminRegistrationService = {
           performanceType: r.performanceType || (r.poetry ? r.poetry.performanceType : undefined),
           stageIntroductionName: r.stageIntroductionName || r.stageName,
           mediaConsent: r.mediaAgreement ?? r.mediaConsent ?? true,
-          eventName: r.event?.title || 'DOBATO Grand Launch',
+          eventName: r.event?.title || 'DOBATOO Grand Launch',
           eventDate: '16 October 2026',
           venueName: r.event?.location || 'The Gardens, Panipokhari, Kathmandu, Nepal',
           performance: r.poetry
@@ -184,12 +184,14 @@ export const adminRegistrationService = {
 
   async createRegistration(payload: any): Promise<APIResponse<RegistrationDetails>> {
     const isPerformer = payload.participationType === 'ATTEND_AND_POETRY';
+    const rawName = payload.fullName?.trim() || (isPerformer ? payload.stageIntroductionName?.trim() : '');
     const cleanPayload = {
-      fullName: payload.fullName?.trim(),
+      fullName: rawName || undefined,
       email: payload.email?.trim().toLowerCase(),
-      phone: payload.phone?.trim(),
+      phone: payload.phone?.trim() ? payload.phone.trim().replace(/[\s-]/g, '') : undefined,
       gender: payload.gender || undefined,
       participationType: payload.participationType,
+      photoUrl: payload.photoUrl?.trim() || undefined,
       discoverySource: payload.discoverySource || 'OTHERS',
       discoverySourceOther: payload.discoverySource === 'OTHERS' ? payload.discoverySourceOther?.trim() : undefined,
       stageIntroductionName: isPerformer ? (payload.stageIntroductionName?.trim() || payload.fullName?.trim()) : undefined,
@@ -218,6 +220,7 @@ export const adminRegistrationService = {
           email: cleanPayload.email,
           phone: cleanPayload.phone,
           gender: cleanPayload.gender || 'OTHER',
+          photoUrl: cleanPayload.photoUrl || returnedData.photoUrl || undefined,
           participationType: cleanPayload.participationType,
           discoverySource: cleanPayload.discoverySource,
           discoverySourceOther: cleanPayload.discoverySourceOther,
@@ -227,7 +230,7 @@ export const adminRegistrationService = {
           mediaConsent: true,
           status: 'REGISTERED',
           createdAt: returnedData.createdAt || new Date().toISOString(),
-          eventName: 'DOBATO Grand Launch',
+          eventName: 'DOBATOO Grand Launch',
           eventDate: '16 October 2026',
           venueName: 'The Gardens, Panipokhari, Kathmandu, Nepal',
           performance: isPerformer
@@ -256,6 +259,35 @@ export const adminRegistrationService = {
         success: false,
         statusCode: 500,
         message: err?.message || 'Server connection error while creating registration.',
+      };
+    }
+  },
+
+  async updateRegistrationPhoto(id: string, photoUrl: string): Promise<APIResponse<RegistrationDetails>> {
+    try {
+      const response = await fetchApi<any>(`/admin/registrations/${id}`, {
+        method: 'PATCH',
+        headers: adminAuthService.getAuthHeaders(),
+        body: JSON.stringify({ photoUrl: photoUrl.trim() }),
+      });
+
+      if (response.success && response.data) {
+        return {
+          ...response,
+          data: response.data,
+        };
+      }
+
+      return {
+        success: false,
+        statusCode: response.statusCode || 400,
+        message: response.message || 'Failed to update photo.',
+      };
+    } catch (err: any) {
+      return {
+        success: false,
+        statusCode: 500,
+        message: err?.message || 'Error updating participant photo.',
       };
     }
   },

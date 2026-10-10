@@ -24,6 +24,8 @@ export interface Registration {
   fullName: string;
   email: string;
   phone: string;
+  photoUrl?: string;
+  gender?: GenderType;
   participationType: ParticipationType;
   createdAt: string;
   status: 'REGISTERED' | 'CANCELLED';
@@ -39,7 +41,6 @@ export interface RegistrationPerformanceDetails {
 }
 
 export interface RegistrationDetails extends Registration {
-  gender?: GenderType;
   discoverySource?: DiscoverySource;
   discoverySourceOther?: string;
   mediaConsent?: boolean;
@@ -58,6 +59,7 @@ export interface PoetryParticipant {
   id: string;
   registrationId: string;
   fullName: string;
+  photoUrl?: string;
   stageIntroductionName: string;
   performanceType: PerformanceType;
   createdAt: string;

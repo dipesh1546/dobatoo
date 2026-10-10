@@ -121,7 +121,7 @@ export const referralService = {
       data: {
         referralCode: code,
         valid: true,
-        publicMessage: 'Someone invited you to DOBATO ❤️',
+        publicMessage: 'Someone invited you to Dobatoo ❤️',
       },
     };
   },

@@ -20,10 +20,10 @@ export const Home: React.FC = () => {
     <>
       <SEO
         title={`${BRAND_NAME} — ${BRAND_SLOGAN}`}
-        description={`DOBATO is a Nepali dating and meaningful-connection platform where two paths can meet and become one connection. Join the DOBATO Grand Launch on ${EVENT_DATE}.`}
+        description={`Dobatoo is a Nepali dating and meaningful-connection platform where two paths can meet and become one connection. Join the Dobatoo Grand Launch on ${EVENT_DATE}.`}
       />
 
-      {/* DOBATO Promotional Homepage Section Sequence */}
+      {/* Dobatoo Promotional Homepage Section Sequence */}
       <HeroSection />
       <IntroductionSection />
       <WhatIsDobatoSection />

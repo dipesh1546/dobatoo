@@ -36,7 +36,7 @@ export const FinalCTASection: React.FC = () => {
           </Heading>
 
           <p className="text-body-lg" style={{ marginBottom: '1.5rem', color: 'rgba(255, 255, 255, 0.85)' }}>
-            Be there when DOBATO begins.
+            Be there when <span className="dobatoo-brand-styled">Dobato<span className="dobatoo-brand-accent-oo">o</span></span> begins.
           </p>
 
           <div
@@ -76,7 +76,7 @@ export const FinalCTASection: React.FC = () => {
 
             <a href="#about">
               <Button variant="outline" size="lg" icon={<Compass size={18} />}>
-                Explore DOBATO
+                Explore Dobatoo
               </Button>
             </a>
           </div>

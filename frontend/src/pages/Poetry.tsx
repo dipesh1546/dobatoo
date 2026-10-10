@@ -18,7 +18,7 @@ import './Poetry.css';
 export const PoetryPage: React.FC = () => {
   const confirmedRules = [
     'Poetry must be original work by the participant.',
-    'The performance should relate to the official DOBATO theme: "DOBATO".',
+    `The performance should relate to the official Dobatoo theme: "${EVENT_POETRY_THEME}".`,
     'Performance Duration: 5 minutes per participant.',
     'No Age Limit: Participants of all ages are welcome to perform.',
     'Respectful and appropriate content is required.',
@@ -36,8 +36,8 @@ export const PoetryPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="DOBATO Open Mic & Poetry — Theme: DOBATO"
-        description="Join the DOBATO Open Mic & Poetry Competition. Theme: DOBATO. Registration is free."
+        title={`Dobatoo Open Mic & Poetry — Theme: ${EVENT_POETRY_THEME}`}
+        description={`Join the Dobatoo Open Mic & Poetry Competition. Theme: ${EVENT_POETRY_THEME}. Registration is free.`}
       />
 
       {/* 1. Poetry Hero Section */}
@@ -96,7 +96,7 @@ export const PoetryPage: React.FC = () => {
             <div className="poetry-gallery-featured">
               <img
                 src="/images/competition/poetry-performance.jpg"
-                alt="Poetry Recital on DOBATO Stage"
+                alt="Poetry Recital on Dobatoo Stage"
                 className="poetry-gallery-img"
                 loading="lazy"
               />
@@ -152,7 +152,7 @@ export const PoetryPage: React.FC = () => {
 
           <Card variant="glass" glow style={{ padding: '3rem 2.5rem' }}>
             <p className="text-body-lg" style={{ marginBottom: '1.75rem', lineHeight: '1.7' }}>
-              The DOBATO Competition invites participants to express their journey of finding the right person — finding someone who understands you, connects with you, and shares meaningful companionship.
+              The <span className="dobatoo-brand-styled">Dobato<span className="dobatoo-brand-accent-oo">o</span></span> Competition invites participants to express their journey of finding the right person — finding someone who understands you, connects with you, and shares meaningful companionship.
             </p>
 
             {/* Unfinalized details clearly marked */}
@@ -284,14 +284,14 @@ export const PoetryPage: React.FC = () => {
                   {prize.trophy && (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.95rem' }}>
                       <Award size={18} color="#F472B6" />
-                      <span>DOBATO Official Trophy</span>
+                      <span>Dobatoo Official Trophy</span>
                     </div>
                   )}
 
                   {prize.tshirt && (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.95rem' }}>
                       <CheckCircle2 size={18} color="#EC4899" />
-                      <span>DOBATO Official T-Shirt</span>
+                      <span>Dobatoo Official T-Shirt</span>
                     </div>
                   )}
 
@@ -355,7 +355,7 @@ export const PoetryPage: React.FC = () => {
             </Heading>
 
             <p className="text-body-lg" style={{ marginBottom: '2.5rem' }}>
-              Reserve your spot for the DOBATO Poetry Competition today.
+              Reserve your spot for the Dobatoo Poetry Competition today.
             </p>
 
             <Link to="/register">

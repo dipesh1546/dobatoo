@@ -76,7 +76,7 @@ export const HeroSection: React.FC = () => {
                 maxWidth: '560px',
               }}
             >
-              DOBATO is a new Nepali platform created for meaningful connections, genuine conversations and stories that begin when two paths meet.
+              <span className="dobatoo-brand-styled">Dobato<span className="dobatoo-brand-accent-oo">o</span></span> is a new Nepali platform created for meaningful connections, genuine conversations and stories that begin when two paths meet.
             </p>
 
             <div
@@ -101,7 +101,7 @@ export const HeroSection: React.FC = () => {
 
               <a href="#intro">
                 <Button variant="outline" size="lg" icon={<Compass size={18} />}>
-                  Explore DOBATO
+                  Explore Dobatoo
                 </Button>
               </a>
             </div>
@@ -116,7 +116,7 @@ export const HeroSection: React.FC = () => {
             <div className="hero-image-card">
               <img
                 src="/images/event/hero.jpg"
-                alt="DOBATO community gathering and authentic meaningful connections"
+                alt="Dobatoo community gathering and authentic meaningful connections"
                 className="hero-backdrop-img"
                 loading="eager"
               />
@@ -126,7 +126,7 @@ export const HeroSection: React.FC = () => {
               <div className="hero-brand-overlay">
                 <img
                   src="/favicon.png"
-                  alt="DOBATO Emblem"
+                  alt="Dobatoo Emblem"
                   width={34}
                   height={34}
                   className="hero-brand-emblem"

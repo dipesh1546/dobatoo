@@ -1,0 +1,78 @@
+/* ==========================================================================
+   Dobatoo Brand Typography & Styling System
+   ========================================================================== */
+
+.dobatoo-brand-name {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  display: inline-inline-flex;
+  align-items: baseline;
+  user-select: none;
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+/* Gradient variant (Default) */
+.dobatoo-brand-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #fce7f3 45%, #f472b6 80%, #d946ef 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 10px rgba(236, 72, 153, 0.3));
+}
+
+/* Neon glow variant */
+.dobatoo-brand-neon {
+  background: linear-gradient(135deg, #fbcfe8 0%, #f472b6 50%, #d946ef 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 12px rgba(236, 72, 153, 0.85)) drop-shadow(0 0 24px rgba(217, 70, 239, 0.5));
+}
+
+/* Light variant */
+.dobatoo-brand-light {
+  color: #ffffff;
+}
+
+/* Dark variant */
+.dobatoo-brand-dark {
+  color: #160a1d;
+}
+
+/* Signature accent on the final double 'oo' / 'O' */
+.dobatoo-brand-accent-oo {
+  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 35%, #d946ef 70%, #8b5cf6 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 0 10px rgba(236, 72, 153, 0.8));
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-left: 0.02em;
+  display: inline-block;
+}
+
+.dobatoo-brand-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Size Variants */
+.dobatoo-brand-size-xs {
+  font-size: 0.8rem;
+}
+
+.dobatoo-brand-size-sm {
+  font-size: 0.95rem;
+}
+
+.dobatoo-brand-size-md {
+  font-size: 1.25rem;
+}
+
+.dobatoo-brand-size-lg {
+  font-size: 1.75rem;
+}
+
+.dobatoo-brand-size-xl {
+  font-size: 2.5rem;
+}

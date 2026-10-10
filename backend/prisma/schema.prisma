@@ -323,6 +323,7 @@ model Registration {
   age      Int?
   city     String?
   gender   String?
+  photoUrl String?
 
   participationType ParticipationType @default(ATTEND_ONLY)
 
@@ -383,7 +384,7 @@ model PoetryParticipant {
   competitionId String? @db.ObjectId
 
   poetryTitle String
-  topic       String @default("DOBATO")
+  topic       String @default("Searching / Finding the Right Person")
 
   language        PoetryLanguage? @default(NEPALI)
   performanceType PerformanceType @default(POETRY)

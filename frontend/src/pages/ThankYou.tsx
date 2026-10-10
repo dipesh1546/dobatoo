@@ -9,7 +9,7 @@ import { Badge } from '../components/ui/Badge/Badge';
 import { Button } from '../components/ui/Button/Button';
 import { EventPass } from '../components/common/EventPass/EventPass';
 import { EventShareCard } from '../components/common/EventShareCard/EventShareCard';
-import { EVENT_DATE, EVENT_VENUE_FULL } from '../constants/brand';
+import { EVENT_DATE, EVENT_VENUE_FULL, EVENT_POETRY_THEME } from '../constants/brand';
 import {
   CheckCircle2,
   Calendar,
@@ -96,7 +96,7 @@ export const ThankYouPage: React.FC = () => {
   const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://dobato.app';
   const inviteUrl = `${baseUrl}/register`;
 
-  const shareText = "DOBATO Grand Launch • OPEN MIC ❤️\n\n16 October 2026\nThe Gardens, Panipokhari, Kathmandu\nPoetry • Music • Storytelling\n\nPoetry Theme: DOBATO\n5 Minutes per Participant • No Age Limit\n\nRegister for FREE:";
+  const shareText = `Dobatoo Grand Launch • OPEN MIC ❤️\n\n16 October 2026\nThe Gardens, Panipokhari, Kathmandu\nPoetry • Music • Storytelling\n\nPoetry Theme: ${EVENT_POETRY_THEME}\n5 Minutes per Participant • No Age Limit\n\nRegister for FREE:`;
 
   const handleCopyInvite = async () => {
     try {
@@ -110,7 +110,7 @@ export const ThankYouPage: React.FC = () => {
     if (typeof navigator !== 'undefined' && 'share' in navigator) {
       try {
         await navigator.share({
-          title: 'DOBATO Grand Launch Open Mic',
+          title: 'Dobatoo Grand Launch Open Mic',
           text: shareText,
           url: inviteUrl,
         });
@@ -121,8 +121,8 @@ export const ThankYouPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="You're Registered for DOBATO — Confirmation"
-        description="Registration confirmed for the DOBATO Grand Launch on 16 October 2026."
+        title="You're Registered for Dobatoo — Confirmation"
+        description="Registration confirmed for the Dobatoo Grand Launch on 16 October 2026."
       />
 
       <Section variant="dark" padding="xl" style={{ paddingTop: 'clamp(5.5rem, 9vw, 9rem)' }}>
@@ -151,7 +151,7 @@ export const ThankYouPage: React.FC = () => {
             </Badge>
 
             <Heading as="h1" fontFamily="serif" style={{ fontSize: 'clamp(1.75rem, 3.5vw + 0.8rem, 2.75rem)', marginBottom: '0.35rem' }}>
-              You're Registered for DOBATO ❤️
+              You're Registered for <span className="dobatoo-brand-styled">Dobato<span className="dobatoo-brand-accent-oo">o</span></span> ❤️
             </Heading>
 
             {fullName && (
@@ -178,7 +178,7 @@ export const ThankYouPage: React.FC = () => {
                 }}
               >
                 <Heart size={14} fill="#F472B6" />
-                <span>You joined DOBATO through an invitation ❤️</span>
+                <span>You joined Dobatoo through an invitation ❤️</span>
               </div>
             )}
 
@@ -323,7 +323,7 @@ export const ThankYouPage: React.FC = () => {
               }}
             >
               <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--dobato-white)', marginBottom: '0.25rem' }}>
-                Invite Friends to DOBATO Open Mic ❤️
+                Invite Friends to Dobatoo Open Mic ❤️
               </div>
 
               <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#F472B6', marginBottom: '0.75rem' }}>
@@ -407,7 +407,7 @@ export const ThankYouPage: React.FC = () => {
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginTop: '2rem' }}>
               <Link to="/">
                 <Button variant="primary" size="lg" icon={<Home size={18} />}>
-                  Return to DOBATO
+                  Return to Dobatoo
                 </Button>
               </Link>
 

@@ -98,6 +98,7 @@ export interface PoetryParticipantDetail {
   id: string;
   registrationId: string;
   participantName: string;
+  photoUrl?: string;
   poetryTitle: string;
   language: string;
   performanceType: string;
@@ -113,6 +114,7 @@ export interface PoetryParticipantDetail {
     age: number;
     city: string;
     gender: string;
+    photoUrl?: string;
   };
 }
 

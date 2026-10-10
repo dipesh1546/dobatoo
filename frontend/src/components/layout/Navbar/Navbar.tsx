@@ -47,7 +47,7 @@ export const Navbar: React.FC = () => {
       >
         <Container size="xl" className="dobato-navbar-container">
           {/* Logo Link */}
-          <Link to="/" aria-label="DOBATO Home">
+          <Link to="/" aria-label="Dobatoo Home">
             <Logo variant="default" size="md" />
           </Link>
 

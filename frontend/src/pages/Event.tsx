@@ -36,8 +36,8 @@ export const EventPage: React.FC = () => {
   return (
     <>
       <SEO
-        title={`DOBATO Grand Launch — 16 October 2026 • ${EVENT_VENUE_NAME}`}
-        description={`Join the DOBATO Grand Launch on 16 October 2026 at ${EVENT_VENUE_FULL} for an evening of poetry, music and meaningful connections.`}
+        title={`Dobatoo Grand Launch — 16 October 2026 • ${EVENT_VENUE_NAME}`}
+        description={`Join the Dobatoo Grand Launch on 16 October 2026 at ${EVENT_VENUE_FULL} for an evening of poetry, music and meaningful connections.`}
       />
 
       {/* 1. Event Hero Section */}
@@ -45,7 +45,7 @@ export const EventPage: React.FC = () => {
         <Container size="xl">
           <div style={{ textAlign: 'center', maxWidth: '840px', margin: '0 auto' }}>
             <Badge variant="romantic" size="md" icon={<Sparkles size={14} />} style={{ marginBottom: '1.5rem' }}>
-              DOBATO GRAND LAUNCH • OPEN MIC
+              DOBATOO GRAND LAUNCH • OPEN MIC
             </Badge>
 
             <Heading as="h1" fontFamily="sans" style={{ fontSize: 'clamp(2.5rem, 5vw + 1rem, 4.5rem)', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
@@ -148,7 +148,7 @@ export const EventPage: React.FC = () => {
             </p>
             <p>And sometimes those paths cross.</p>
             <p style={{ fontWeight: 600, color: 'var(--dobato-pink)' }}>
-              DOBATO brings that idea to life through an evening of poetry, music and connection.
+              <span className="dobatoo-brand-styled">Dobato<span className="dobatoo-brand-accent-oo">o</span></span> brings that idea to life through an evening of poetry, music and connection.
             </p>
           </div>
         </Container>
@@ -381,14 +381,14 @@ export const EventPage: React.FC = () => {
                   {prize.trophy && (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.95rem' }}>
                       <Award size={18} color="#F472B6" />
-                      <span>DOBATO Official Trophy</span>
+                      <span>Dobatoo Official Trophy</span>
                     </div>
                   )}
 
                   {prize.tshirt && (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.95rem' }}>
                       <CheckCircle2 size={18} color="#EC4899" />
-                      <span>DOBATO Official T-Shirt</span>
+                      <span>Dobatoo Official T-Shirt</span>
                     </div>
                   )}
 
@@ -414,7 +414,7 @@ export const EventPage: React.FC = () => {
               OCTOBER 2026
             </div>
             <div style={{ fontSize: '1.1rem', color: 'var(--dobato-muted)', marginBottom: '0.4rem' }}>
-              DOBATO GRAND LAUNCH
+              DOBATOO GRAND LAUNCH
             </div>
             <div style={{ fontSize: '1rem', color: 'var(--dobato-pink)', fontWeight: 600, marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}>
               <MapPin size={16} />

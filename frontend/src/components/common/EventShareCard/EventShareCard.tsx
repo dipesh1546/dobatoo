@@ -25,7 +25,7 @@ export const EventShareCard: React.FC<EventShareCardProps> = ({
     : `${baseUrl}/register?utm_source=social_share&utm_medium=card&utm_campaign=dobato_launch`;
 
   const shareText =
-    "Something special is happening at DOBATO ❤️\n\nDOBATO Grand Launch\n16 October 2026\nThe Gardens, Panipokhari, Kathmandu, Nepal\n\nPoetry • Music • Connections\n\nTwo Paths. One Connection.\n\nRegister for FREE:";
+    "Something special is happening at Dobatoo ❤️\n\nDobatoo Grand Launch\n16 October 2026\nThe Gardens, Panipokhari, Kathmandu, Nepal\n\nPoetry • Music • Connections\n\nTwo Paths. One Connection.\n\nRegister for FREE:";
 
   const encodedText = encodeURIComponent(shareText);
   const encodedUrl = encodeURIComponent(shareUrl);
@@ -49,7 +49,7 @@ export const EventShareCard: React.FC<EventShareCardProps> = ({
     if (typeof navigator !== 'undefined' && 'share' in navigator) {
       try {
         await navigator.share({
-          title: 'DOBATO Grand Launch',
+          title: 'Dobatoo Grand Launch',
           text: shareText,
           url: shareUrl,
         });
@@ -84,7 +84,7 @@ export const EventShareCard: React.FC<EventShareCardProps> = ({
       </Badge>
 
       <h3 style={{ fontSize: '1.625rem', fontWeight: 800, color: 'var(--dobato-white)', margin: '0 0 0.5rem 0', fontFamily: 'var(--font-serif)' }}>
-        DOBATO GRAND LAUNCH
+        DOBATOO GRAND LAUNCH
       </h3>
 
       <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: '#F472B6', fontWeight: 700, fontSize: '1rem', marginBottom: '0.35rem' }}>

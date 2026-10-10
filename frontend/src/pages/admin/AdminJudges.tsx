@@ -158,7 +158,7 @@ export const AdminJudgesPage: React.FC = () => {
             Judges Management
           </h2>
           <p style={{ fontSize: '0.875rem', color: '#64748b', marginTop: '0.25rem' }}>
-            Authorized judges panel for DOBATO Open Mic & Poetry competition
+            Authorized judges panel for Dobatoo Open Mic & Poetry competition
           </p>
         </div>
 
@@ -432,7 +432,7 @@ export const AdminJudgesPage: React.FC = () => {
                 <input
                   type="tel"
                   className="admin-input"
-                  placeholder="+977 98XXXXXXXX"
+                  placeholder="+977 98XXXXXXXX / +977 97XXXXXXXX"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />

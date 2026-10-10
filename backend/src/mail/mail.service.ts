@@ -62,7 +62,7 @@ export class MailService {
    */
   async sendConfirmationEmail(options: SendConfirmationEmailOptions): Promise<boolean> {
     try {
-      const subject = "You're Registered for the DOBATO Grand Launch ❤️";
+      const subject = "You're Registered for the Dobatoo Grand Launch ❤️";
       const body = this.buildEmailTemplate(options);
 
       const result = await this.sendEmail({
@@ -81,7 +81,7 @@ export class MailService {
   }
 
   /**
-   * Builds clean, professional DOBATO confirmation email body template.
+   * Builds clean, professional Dobatoo confirmation email body template.
    */
   private buildEmailTemplate(options: SendConfirmationEmailOptions): string {
     const isPoetry = options.participationType === 'ATTEND_AND_POETRY';
@@ -93,19 +93,19 @@ export class MailService {
 --------------------------------------------------
 Poetry Competition Registration
 --------------------------------------------------
-You're also registered for the DOBATO Poetry Competition!
-Theme: "DOBATO — जहाँ दुई बाटो भेटिन्छन्"
+You're also registered for the Dobatoo Poetry Competition!
+Theme: "Searching / Finding the Right Person"
 ${options.poetryTitle ? `Poetry Title: "${options.poetryTitle}"` : ''}
       `;
     }
 
     return `
-DOBATO
+Dobatoo
 "Two Paths. One Connection."
 
 Dear ${options.fullName},
 
-You're officially registered for the DOBATO Grand Launch!
+You're officially registered for the Dobatoo Grand Launch!
 
 ==================================================
 REGISTRATION DETAILS
@@ -120,7 +120,7 @@ ${poetrySection}
 Please keep your registration ID for event check-in.
 
 Thank you,
-The DOBATO Team
+The Dobatoo Team
     `.trim();
   }
 }

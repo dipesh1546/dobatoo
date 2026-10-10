@@ -4,7 +4,7 @@ import { adminAuthService } from '../../services/admin/adminAuthService';
 
 export const AdminSettingsPage: React.FC = () => {
   const user = adminAuthService.getUser() || {
-    name: 'DOBATO Organizer',
+    name: 'Dobatoo Organizer',
     email: 'admin@dobato.com',
     role: 'SUPER_ADMIN',
   };
@@ -146,7 +146,7 @@ export const AdminSettingsPage: React.FC = () => {
             </div>
             <div>
               <div style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>POETRY THEME</div>
-              <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#7c3aed' }}>DOBATO</div>
+              <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#7c3aed' }}>Searching / Finding the Right Person</div>
             </div>
             <div>
               <div style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>RULES</div>

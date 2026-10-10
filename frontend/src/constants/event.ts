@@ -60,8 +60,8 @@ export const EVENT_HIGHLIGHTS: EventHighlight[] = [
     id: 'prizes',
     icon: 'Trophy',
     title: 'Competition Prizes',
-    subtitle: 'NPR 5,000 Total Pool',
-    description: 'Win cash prizes (1st Prize: NPR 3,000 | 2nd Prize: NPR 2,000), official DOBATO trophies, custom merchandise, and free platform access.',
+    subtitle: 'NPR 3,500 Total Pool',
+    description: 'Win cash prizes (1st Prize: NPR 2,500 | 2nd Prize: NPR 1,000), official Dobatoo trophies, custom merchandise, and free platform access.',
   },
 ];
 
@@ -78,8 +78,8 @@ export const EVENT_TIMELINE: TimelineStep[] = [
   },
   {
     label: 'Phase 3',
-    title: 'DOBATO Platform Launch',
-    description: 'Official reveal of the DOBATO platform, vision, and upcoming community features.',
+    title: 'Dobatoo Platform Launch',
+    description: 'Official reveal of the Dobatoo platform, vision, and upcoming community features.',
   },
   {
     label: 'Phase 4',
@@ -91,20 +91,20 @@ export const EVENT_TIMELINE: TimelineStep[] = [
 export const PRIZES: PrizeItem[] = [
   {
     rank: '1ST PRIZE',
-    amount: 'NPR 3,000',
+    amount: 'NPR 2,500',
     badge: 'Champion',
     trophy: true,
     tshirt: true,
-    access: 'Lifetime Free DOBATO Access',
+    access: 'Lifetime Free Dobatoo Access',
     isFeatured: true,
   },
   {
     rank: '2ND PRIZE',
-    amount: 'NPR 2,000',
+    amount: 'NPR 1,000',
     badge: 'Runner Up',
     trophy: true,
     tshirt: true,
-    access: '6 Months Free DOBATO Access',
+    access: '6 Months Free Dobatoo Access',
     isFeatured: false,
   },
   {
@@ -112,7 +112,7 @@ export const PRIZES: PrizeItem[] = [
     badge: '3rd Place',
     trophy: true,
     tshirt: true,
-    access: '3 Months Free DOBATO Access',
+    access: '3 Months Free Dobatoo Access',
     isFeatured: false,
   },
 ];
@@ -185,7 +185,7 @@ export const EVENT_EXPERIENCE_STEPS = [
   {
     step: '05',
     title: 'CELEBRATE',
-    description: 'Welcome DOBATO.',
+    description: 'Welcome Dobatoo.',
   },
 ];
 
@@ -193,7 +193,7 @@ export const EVENT_FAQ: FAQItemData[] = [
   {
     id: 'faq-1',
     question: 'Is registration free?',
-    answer: 'Yes. Registration for the DOBATO launch event is completely free.',
+    answer: 'Yes. Registration for the Dobatoo launch event is completely free.',
   },
   {
     id: 'faq-2',
@@ -213,17 +213,17 @@ export const EVENT_FAQ: FAQItemData[] = [
   {
     id: 'faq-5',
     question: 'What are the prizes for performers?',
-    answer: '1st Prize wins NPR 3,000 cash, DOBATO trophy & merch. 2nd Prize wins NPR 2,000 cash, trophy & merch. 3rd Prize wins 3 months free access, trophy & merch.',
+    answer: '1st Prize wins NPR 2,500 cash, Dobatoo trophy & merch. 2nd Prize wins NPR 1,000 cash, trophy & merch. 3rd Prize wins 3 months free access, trophy & merch.',
   },
   {
     id: 'faq-6',
-    question: 'Is DOBATO a dating platform?',
-    answer: 'Yes. DOBATO is created as a Nepali platform for discovering people and building meaningful connections.',
+    question: 'Is Dobatoo a dating platform?',
+    answer: 'Yes. Dobatoo is created as a Nepali platform for discovering people and building meaningful connections.',
   },
   {
     id: 'faq-venue',
     question: 'Where is the event venue?',
-    answer: 'The DOBATO Grand Launch is hosted at The Gardens, Panipokhari, Kathmandu, Nepal.',
+    answer: 'The Dobatoo Grand Launch is hosted at The Gardens, Panipokhari, Kathmandu, Nepal.',
   },
   {
     id: 'faq-duration',

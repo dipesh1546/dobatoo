@@ -63,7 +63,7 @@ export const EventPass: React.FC<EventPassProps> = ({
       <div ref={passRef} className="dobato-pass-card">
         <div className="dobato-pass-header">
           <Logo variant="dark" size="md" />
-          <div className="dobato-pass-title">DOBATO GRAND LAUNCH</div>
+          <div className="dobato-pass-title">DOBATOO GRAND LAUNCH</div>
           <div className="dobato-pass-date">{EVENT_DATE}</div>
           <div style={{ fontSize: '0.825rem', fontWeight: 700, color: '#3B123F', marginTop: '0.2rem' }}>
             {EVENT_VENUE_NAME} • {EVENT_VENUE_LOCATION}
@@ -84,10 +84,10 @@ export const EventPass: React.FC<EventPassProps> = ({
             fgColor="#160A1D"
             level="H"
             marginSize={2}
-            aria-label="Event registration QR code for DOBATO."
+            aria-label="Event registration QR code for Dobatoo."
           />
           <div className="dobato-pass-checkin-note">
-            Official DOBATO Registration Pass
+            Official Dobatoo Registration Pass
           </div>
         </div>
 

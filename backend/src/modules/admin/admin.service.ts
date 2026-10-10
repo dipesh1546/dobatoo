@@ -347,6 +347,7 @@ export class AdminService {
           fullName: true,
           email: true,
           phone: true,
+          photoUrl: true,
           participationType: true,
           status: true,
           createdAt: true,
@@ -387,6 +388,7 @@ export class AdminService {
         fullName: r.fullName,
         email: r.email,
         phone: r.phone,
+        photoUrl: r.photoUrl,
         participationType: r.participationType,
         status: r.status,
         performanceType: r.poetryParticipant?.performanceType || null,
@@ -542,6 +544,7 @@ export class AdminService {
       age: r.age,
       city: r.city,
       gender: r.gender,
+      photoUrl: r.photoUrl,
       participationType: r.participationType,
       stageName: r.stageIntroductionName,
       stageIntroductionName: r.stageIntroductionName,
@@ -629,6 +632,7 @@ export class AdminService {
       age: registration.age,
       city: registration.city,
       gender: registration.gender,
+      photoUrl: registration.photoUrl,
       participationType: registration.participationType,
       stageName: registration.stageIntroductionName,
       stageIntroductionName: registration.stageIntroductionName,
@@ -679,10 +683,19 @@ export class AdminService {
     }
 
     // Fixed poetry topic validation
-    if (dto.topic && dto.topic.trim().toUpperCase() !== FIXED_POETRY_TOPIC) {
-      throw new BadRequestException(
-        `Invalid poetry topic "${dto.topic}". The only accepted topic is "${FIXED_POETRY_TOPIC}".`,
-      );
+    if (dto.topic) {
+      const normalizedRaw = dto.topic.replace(/\s+/g, ' ').trim().toUpperCase();
+      const normalizedExpected = FIXED_POETRY_TOPIC.replace(/\s+/g, ' ').trim().toUpperCase();
+      const validTopics = [
+        normalizedExpected,
+        'SEARCHING/FINDING THE RIGHT PERSON',
+        'DOBATO',
+      ];
+      if (!validTopics.includes(normalizedRaw)) {
+        throw new BadRequestException(
+          `Invalid poetry topic "${dto.topic}". The only accepted topic is "${FIXED_POETRY_TOPIC}".`,
+        );
+      }
     }
 
     const normalizedEmail = dto.email.toLowerCase().trim();
@@ -743,6 +756,7 @@ export class AdminService {
           age: dto.age ?? null,
           city: dto.city ? dto.city.trim() : null,
           gender: dto.gender ? dto.gender.trim() : null,
+          photoUrl: dto.photoUrl ? dto.photoUrl.trim() : null,
           participationType: dto.participationType || ParticipationType.ATTEND_ONLY,
           discoverySource: dto.discoverySource,
           stageIntroductionName: stageIntroName,
@@ -821,6 +835,7 @@ export class AdminService {
     if (dto.age !== undefined) regData.age = dto.age;
     if (dto.city !== undefined) regData.city = dto.city ? dto.city.trim() : null;
     if (dto.gender !== undefined) regData.gender = dto.gender ? dto.gender.trim() : null;
+    if (dto.photoUrl !== undefined) regData.photoUrl = dto.photoUrl ? dto.photoUrl.trim() : null;
     if (dto.participationType) regData.participationType = dto.participationType;
     if (dto.status) regData.status = dto.status;
 
@@ -919,6 +934,7 @@ export class AdminService {
               phone: true,
               city: true,
               status: true,
+              photoUrl: true,
             },
           },
           assignments: {
@@ -939,6 +955,7 @@ export class AdminService {
       participantName: p.registration.fullName,
       email: p.registration.email,
       phone: p.registration.phone,
+      photoUrl: p.registration.photoUrl,
       poetryTitle: p.poetryTitle,
       poetryTopic: FIXED_POETRY_TOPIC,
       language: p.language,
@@ -975,6 +992,7 @@ export class AdminService {
             phone: true,
             city: true,
             status: true,
+            photoUrl: true,
           },
         },
         assignments: {
@@ -1005,6 +1023,7 @@ export class AdminService {
       participantName: participant.registration.fullName,
       email: participant.registration.email,
       phone: participant.registration.phone,
+      photoUrl: participant.registration.photoUrl,
       poetryTitle: participant.poetryTitle,
       poetryTopic: FIXED_POETRY_TOPIC,
       language: participant.language,

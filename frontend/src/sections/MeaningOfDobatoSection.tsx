@@ -19,7 +19,7 @@ export const MeaningOfDobatoSection: React.FC = () => {
             </Badge>
 
             <Heading as="h2" fontFamily="sans" style={{ marginBottom: '1rem' }}>
-              Why <GradientText variant="primary">DOBATO?</GradientText>
+              Why <GradientText variant="primary">Dobatoo?</GradientText>
             </Heading>
 
             <h3
@@ -47,7 +47,7 @@ export const MeaningOfDobatoSection: React.FC = () => {
               }}
             >
               <p>
-                DOBATO represents the moment when two different journeys meet.
+                <span className="dobatoo-brand-styled">Dobato<span className="dobatoo-brand-accent-oo">o</span></span> represents the moment when two different journeys meet.
               </p>
 
               <div

@@ -23,7 +23,7 @@ export const PrizeTeaserSection: React.FC = () => {
           </Heading>
 
           <p className="text-body-lg" style={{ marginTop: '1rem' }}>
-            Celebrate your creativity with official DOBATO trophies, cash awards, and exclusive membership perks.
+            Celebrate your creativity with official Dobatoo trophies, cash awards, and exclusive membership perks.
           </p>
         </div>
 
@@ -92,14 +92,14 @@ export const PrizeTeaserSection: React.FC = () => {
                   {prize.trophy && (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.95rem' }}>
                       <Award size={18} color="#F472B6" />
-                      <span>DOBATO Official Trophy</span>
+                      <span>Dobatoo Official Trophy</span>
                     </div>
                   )}
 
                   {prize.tshirt && (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.95rem' }}>
                       <CheckCircle2 size={18} color="#EC4899" />
-                      <span>DOBATO Official T-Shirt</span>
+                      <span>Dobatoo Official T-Shirt</span>
                     </div>
                   )}
 

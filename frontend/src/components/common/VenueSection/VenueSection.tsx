@@ -28,7 +28,7 @@ export const VenueSection: React.FC<VenueSectionProps> = ({ id = 'venue' }) => {
                 <div className="venue-image-wrapper">
                   <img
                     src="/images/event/venue.jpg"
-                    alt="DOBATO Grand Launch venue at The Gardens, Panipokhari, Kathmandu"
+                    alt="Dobatoo Grand Launch venue at The Gardens, Panipokhari, Kathmandu"
                     className={`venue-img ${imageLoaded ? 'venue-img-loaded' : ''}`}
                     loading="lazy"
                     onLoad={() => setImageLoaded(true)}
@@ -71,7 +71,7 @@ export const VenueSection: React.FC<VenueSectionProps> = ({ id = 'venue' }) => {
 
             <div className="venue-date-row">
               <Calendar size={16} color="#F472B6" />
-              <span>DOBATO Grand Launch • {EVENT_DATE}</span>
+              <span>Dobatoo Grand Launch • {EVENT_DATE}</span>
             </div>
 
             <div className="venue-cta-wrap">

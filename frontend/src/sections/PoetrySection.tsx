@@ -78,14 +78,14 @@ export const PoetrySection: React.FC = () => {
                   <div>
                     <span className="text-caption" style={{ color: 'var(--dobato-muted)' }}>🥇 1st Prize</span>
                     <div style={{ fontSize: '1.25rem', fontWeight: 800, color: 'var(--dobato-pink)' }}>
-                      NPR 3,000
+                      NPR 2,500
                     </div>
                   </div>
 
                   <div>
                     <span className="text-caption" style={{ color: 'var(--dobato-muted)' }}>🥈 2nd Prize</span>
                     <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#F0ABFC' }}>
-                      NPR 2,000
+                      NPR 1,000
                     </div>
                   </div>
 
@@ -129,7 +129,7 @@ export const PoetrySection: React.FC = () => {
                 <div className="poetry-image-card">
                   <img
                     src="/images/competition/poetry-performance.jpg"
-                    alt="DOBATO Poetry Performance Stage"
+                    alt="Dobatoo Poetry Performance Stage"
                     className="poetry-section-img"
                     loading="lazy"
                   />

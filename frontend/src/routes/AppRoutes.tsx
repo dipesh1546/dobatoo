@@ -65,7 +65,7 @@ export const AppRoutes: React.FC = () => {
     <Suspense
       fallback={
         <div style={{ minHeight: '80vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <LoadingSpinner size="lg" label="Loading DOBATO..." />
+          <LoadingSpinner size="lg" label="Loading Dobatoo..." />
         </div>
       }
     >

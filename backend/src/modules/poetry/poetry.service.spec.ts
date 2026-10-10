@@ -27,7 +27,7 @@ describe('PoetryService', () => {
         id: 'p1',
         position: 1,
         title: 'First Prize',
-        cashAmount: 3000,
+        cashAmount: 2500,
         currency: 'NPR',
         benefits: ['Lifetime Free DOBATO Access', '1 T-shirt', '1 Award'],
         displayOrder: 1,
@@ -36,7 +36,7 @@ describe('PoetryService', () => {
         id: 'p2',
         position: 2,
         title: 'Second Prize',
-        cashAmount: 2000,
+        cashAmount: 1000,
         currency: 'NPR',
         benefits: ['6 Months Free DOBATO Access', '1 T-shirt', '1 Award'],
         displayOrder: 2,
@@ -83,7 +83,7 @@ describe('PoetryService', () => {
       expect(result.isOpen).toBe(true);
       expect(result.judging.isFinalized).toBe(false);
       expect(result.guidelines).toHaveLength(1);
-      expect(result.prizes[0].cashAmount).toBe(3000);
+      expect(result.prizes[0].cashAmount).toBe(2500);
     });
 
     it('should throw NotFoundException when no active competition exists', async () => {

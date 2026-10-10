@@ -100,10 +100,10 @@ export class CreateRegistrationDto {
   })
   @IsString()
   @IsNotEmpty({ message: 'Phone number is required' })
-  @Matches(/^(\+?977[- ]?)?[9][6-8]\d{8}$|^(\+?\d{1,4}[- ]?)?\d{7,14}$/, {
-    message: 'Phone number must be a valid mobile or phone format (e.g. +97798XXXXXXXX)',
+  @Matches(/^(\+?977[- ]?)?[9][6-8]\d{8}$|^(\+?\d{1,4}[- ]?)?\d{7,15}$/, {
+    message: 'Phone number must be a valid mobile or phone format (e.g. +97798XXXXXXXX or +97797XXXXXXXX)',
   })
-  @Transform(({ value }) => (typeof value === 'string' ? value.trim() : value))
+  @Transform(({ value }) => (typeof value === 'string' ? value.trim().replace(/[\s-]/g, '') : value))
   phone: string;
 
   @ApiPropertyOptional({
@@ -177,14 +177,23 @@ export class CreateRegistrationDto {
   performanceDescription?: string;
 
   @ApiPropertyOptional({
-    description: 'Poetry topic. The only accepted topic is DOBATO.',
-    example: 'DOBATO',
-    default: 'DOBATO',
+    description: 'Poetry topic. Official topic is Searching / Finding the Right Person.',
+    example: 'Searching / Finding the Right Person',
+    default: 'Searching / Finding the Right Person',
   })
   @IsOptional()
   @IsString()
-  @Transform(({ value }) => (typeof value === 'string' ? value.trim().toUpperCase() : value))
+  @Transform(({ value }) => (typeof value === 'string' ? value.trim() : value))
   topic?: string;
+
+  @ApiPropertyOptional({
+    description: 'Optional participant photo URL (e.g. from Cloudinary for giveaways)',
+    example: 'https://res.cloudinary.com/dobato/image/upload/v12345/photo.jpg',
+  })
+  @IsOptional()
+  @IsString()
+  @Transform(({ value }) => (typeof value === 'string' ? value.trim() : value))
+  photoUrl?: string;
 
   @ApiPropertyOptional({
     description: 'Alias for stageIntroductionName',

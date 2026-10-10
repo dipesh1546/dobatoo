@@ -23,8 +23,8 @@ describe('EventController (Phase 3)', () => {
     },
     highlights: [],
     prizes: [
-      { id: 'p1', position: 1, title: 'First Prize', cashAmount: 3000, cashPrize: 3000, currency: 'NPR', benefits: ['Lifetime Free DOBATO Access', '1 T-shirt', '1 Award'], displayOrder: 1 },
-      { id: 'p2', position: 2, title: 'Second Prize', cashAmount: 2000, cashPrize: 2000, currency: 'NPR', benefits: ['6 Months Free DOBATO Access', '1 T-shirt', '1 Award'], displayOrder: 2 },
+      { id: 'p1', position: 1, title: 'First Prize', cashAmount: 2500, cashPrize: 2500, currency: 'NPR', benefits: ['Lifetime Free DOBATO Access', '1 T-shirt', '1 Award'], displayOrder: 1 },
+      { id: 'p2', position: 2, title: 'Second Prize', cashAmount: 1000, cashPrize: 1000, currency: 'NPR', benefits: ['6 Months Free DOBATO Access', '1 T-shirt', '1 Award'], displayOrder: 2 },
       { id: 'p3', position: 3, title: 'Third Prize', cashAmount: null, cashPrize: null, currency: 'NPR', benefits: ['3 Months Free DOBATO Access', '1 T-shirt', '1 Award'], displayOrder: 3 },
     ],
     poetryCompetition: {

@@ -9,7 +9,7 @@ interface ExtendedSEOProps extends PageMetaProps {
 export const SEO: React.FC<ExtendedSEOProps> = ({
   title,
   description,
-  keywords = ['DOBATO', 'DOBATO Grand Launch', 'Nepali Dating Platform', 'Poetry Event Nepal', 'Meaningful Connections', '16 October 2026'],
+  keywords = ['Dobatoo', 'Dobatoo Grand Launch', 'Nepali Dating Platform', 'Poetry Event Nepal', 'Meaningful Connections', '16 October 2026'],
   ogImage,
   canonicalUrl,
   noindex = false,
@@ -17,18 +17,18 @@ export const SEO: React.FC<ExtendedSEOProps> = ({
   const isHomepage = typeof window !== 'undefined' && (window.location.pathname === '/' || window.location.pathname === '');
   
   const metaTitle = title
-    ? title.includes('DOBATO')
+    ? title.includes('Dobatoo') || title.includes('DOBATOO')
       ? title
       : `${title} | ${SITE_CONFIG.name}`
     : isHomepage
-    ? 'DOBATO — Two Paths. One Connection.'
-    : 'DOBATO Grand Launch — Poetry, Music & Connections';
+    ? 'Dobatoo — Two Paths. One Connection.'
+    : 'Dobatoo Grand Launch — Poetry, Music & Connections';
 
   const metaDescription =
     description ||
     (isHomepage
-      ? 'DOBATO is a platform for meaningful connections. Join the DOBATO Grand Launch for an evening of poetry, music and new connections.'
-      : 'Join DOBATO for an evening of poetry, music and meaningful connections. Register for the Grand Launch on 16 October 2026.');
+      ? 'Dobatoo is a platform for meaningful connections. Join the Dobatoo Grand Launch for an evening of poetry, music and new connections.'
+      : 'Join Dobatoo for an evening of poetry, music and meaningful connections. Register for the Grand Launch on 16 October 2026.');
 
   const image = ogImage || SITE_CONFIG.defaultOgImage || '/assets/dobato-share-preview.png';
   const url = canonicalUrl || (typeof window !== 'undefined' ? window.location.href : 'https://dobato.app');
@@ -98,7 +98,7 @@ export const SEO: React.FC<ExtendedSEOProps> = ({
           {
             '@type': 'Organization',
             '@id': 'https://dobato.app/#organization',
-            'name': 'DOBATO',
+            'name': 'Dobatoo',
             'url': 'https://dobato.app',
             'slogan': 'Two Paths. One Connection.',
             'description': 'Nepali meaningful-connection and dating platform.',
@@ -106,7 +106,7 @@ export const SEO: React.FC<ExtendedSEOProps> = ({
           {
             '@type': 'Event',
             '@id': 'https://dobato.app/#event',
-            'name': 'DOBATO Grand Launch',
+            'name': 'Dobatoo Grand Launch',
             'startDate': '2026-10-16',
             'eventStatus': 'https://schema.org/EventScheduled',
             'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',

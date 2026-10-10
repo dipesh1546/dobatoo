@@ -1,0 +1,676 @@
+/* ==========================================================================
+   DOBATO PARTICIPANT ID CARD STYLES
+   Exact 3" x 4" Front & Back Performer ID Card Implementation
+   Brand: Dark Velvet Purple (#0c071d) with Neon Pink & Violet Gradients
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Dancing+Script:wght@600;700&family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap');
+
+:root {
+  --idcard-width: 3in;
+  --idcard-height: 4in;
+  --idcard-bg-base: #0c071d;
+  --idcard-bg-gradient: linear-gradient(165deg, #16082e 0%, #0c061d 45%, #180833 100%);
+  --idcard-neon-pink: #ec4899;
+  --idcard-neon-magenta: #d946ef;
+  --idcard-neon-violet: #8b5cf6;
+  --idcard-border-glow: rgba(236, 72, 153, 0.55);
+  --idcard-text-white: #ffffff;
+  --idcard-text-pink-light: #fce7f3;
+  --idcard-text-pink-muted: #f472b6;
+}
+
+/* ==========================================================================
+   BASE 3" x 4" CARD CONTAINER (Strict Physical Dimensions)
+   ========================================================================== */
+.dobato-id-card-frame {
+  width: var(--idcard-width);
+  height: var(--idcard-height);
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+  background: var(--idcard-bg-base);
+  background-image: var(--idcard-bg-gradient);
+  border-radius: 12px;
+  border: 1.5px solid var(--idcard-border-glow);
+  box-shadow:
+    0 12px 30px -5px rgba(0, 0, 0, 0.7),
+    0 0 18px rgba(236, 72, 153, 0.28),
+    inset 0 0 20px rgba(139, 92, 246, 0.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  user-select: none;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--idcard-text-white);
+  flex-shrink: 0;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Atmospheric Glow Backgrounds */
+.dobato-id-card-frame::before {
+  content: '';
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 100px;
+  background: radial-gradient(ellipse at center, rgba(236, 72, 153, 0.42) 0%, rgba(139, 92, 246, 0.22) 50%, transparent 80%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dobato-id-card-frame::after {
+  content: '';
+  position: absolute;
+  bottom: -25px;
+  right: -25px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(217, 70, 239, 0.28) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Decorative SVG Hearts on Card */
+.dobato-id-card-heart-bg {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.16;
+}
+
+/* Ambient bottom flowing wave SVG */
+.dobato-id-card-bottom-waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Content layer over gradients */
+.dobato-id-card-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 11px 13px 9px 13px;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   FRONT SIDE SPECIFIC ELEMENTS
+   ========================================================================== */
+.dobato-id-card-front-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 1px;
+}
+
+.dobato-id-card-logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.dobato-id-card-logo-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(236, 72, 153, 0.55);
+}
+
+.dobato-id-card-logo-wordmark {
+  font-size: 16.5px;
+  font-weight: 900;
+  letter-spacing: 2.2px;
+  background: linear-gradient(135deg, #ffffff 30%, #fce7f3 70%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dobato-id-card-logo-accent {
+  background: linear-gradient(135deg, #ec4899 0%, #d946ef 55%, #8b5cf6 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.75));
+  font-weight: 900;
+}
+
+.dobato-id-card-main-tagline {
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--idcard-text-pink-light);
+  text-transform: uppercase;
+  margin-top: 3px;
+  opacity: 0.95;
+}
+
+.dobato-id-card-secondary-tagline {
+  font-family: 'Dancing Script', 'Caveat', cursive, serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--idcard-text-pink-muted);
+  font-style: italic;
+  margin-top: 1px;
+  text-shadow: 0 0 8px rgba(244, 114, 182, 0.45);
+  line-height: 1.15;
+}
+
+/* Center Photo Section */
+.dobato-id-card-photo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 3px 0 2px 0;
+  position: relative;
+}
+
+.dobato-id-card-photo-ring {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(135deg, #ec4899 0%, #d946ef 45%, #8b5cf6 100%);
+  box-shadow:
+    0 0 16px rgba(236, 72, 153, 0.65),
+    0 0 30px rgba(139, 92, 246, 0.25),
+    inset 0 0 8px rgba(139, 92, 246, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.dobato-id-card-photo {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #1a0b2e;
+  border: 2px solid #0c071d;
+  display: block;
+}
+
+.dobato-id-card-photo-fallback {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #2e0e54 0%, #17072d 75%, #0c021a 100%);
+  border: 2px solid #0c071d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 14px rgba(236, 72, 153, 0.25);
+}
+
+.dobato-id-card-photo-fallback-initial {
+  font-size: 35px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ffffff 25%, #fbcfe8 65%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+  text-shadow: 0 0 12px rgba(236, 72, 153, 0.55);
+  z-index: 2;
+}
+
+.dobato-id-card-photo-fallback-watermark {
+  position: absolute;
+  opacity: 0.14;
+  color: #ec4899;
+  z-index: 1;
+}
+
+/* Participant Details Section */
+.dobato-id-card-details-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 3px;
+  margin: 1px 0;
+}
+
+/* Participant Name Panel */
+.dobato-id-card-name-panel {
+  width: 100%;
+  max-width: 236px;
+  background: rgba(22, 10, 42, 0.9);
+  border: 1.5px solid rgba(236, 72, 153, 0.65);
+  border-radius: 20px;
+  padding: 5px 12px;
+  margin: 0 auto;
+  text-align: center;
+  backdrop-filter: blur(6px);
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.45),
+    0 0 10px rgba(236, 72, 153, 0.25);
+  box-sizing: border-box;
+}
+
+.dobato-id-card-name {
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.35px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  line-height: 1.2;
+}
+
+/* Role Label Badge */
+.dobato-id-card-role-badge {
+  display: inline-block;
+  background: linear-gradient(90deg, #ec4899 0%, #a855f7 100%);
+  color: #ffffff;
+  font-size: 7.2px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  padding: 2.5px 10px;
+  border-radius: 10px;
+  margin: 1px auto;
+  box-shadow: 0 0 10px rgba(236, 72, 153, 0.45);
+}
+
+/* Performance Category Section */
+.dobato-id-card-category-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: rgba(236, 72, 153, 0.12);
+  border: 1px solid rgba(236, 72, 153, 0.35);
+  border-radius: 12px;
+  padding: 2px 9px;
+  margin: 1px auto 0 auto;
+}
+
+.dobato-id-card-category-text {
+  font-size: 8px;
+  font-weight: 700;
+  color: #fbcfe8;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+/* Front Event Footer */
+.dobato-id-card-front-footer {
+  border-top: 1px solid rgba(236, 72, 153, 0.3);
+  padding-top: 5px;
+  margin-top: 2px;
+  text-align: center;
+}
+
+.dobato-id-card-event-name {
+  font-size: 8.5px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+.dobato-id-card-event-details-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 7px;
+  color: #f472b6;
+  font-weight: 600;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dobato-id-card-event-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background-color: var(--idcard-neon-pink);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   BACK SIDE SPECIFIC ELEMENTS
+   ========================================================================== */
+.dobato-id-card-back-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 1px;
+}
+
+/* Rounded Information Panel */
+.dobato-id-card-info-panel {
+  background: rgba(22, 10, 42, 0.9);
+  border: 1px solid rgba(236, 72, 153, 0.45);
+  border-radius: 9px;
+  padding: 5px 9px;
+  margin: 3px 0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+}
+
+.dobato-id-card-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.8px 0;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
+}
+
+.dobato-id-card-info-row:last-child {
+  border-bottom: none;
+}
+
+.dobato-id-card-info-label {
+  font-size: 6.6px;
+  font-weight: 700;
+  color: #f9a8d4;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dobato-id-card-info-value {
+  font-size: 7.6px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: right;
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dobato-id-card-info-value-highlight {
+  color: #f472b6;
+  font-family: monospace;
+  font-weight: 800;
+  font-size: 8.2px;
+}
+
+/* Lower Section: QR Code + Text + Decorative Heart */
+.dobato-id-card-qr-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 3px 0 2px 0;
+  padding: 0 3px;
+}
+
+.dobato-id-card-qr-box {
+  background: #ffffff;
+  padding: 3.5px;
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(236, 72, 153, 0.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dobato-id-card-qr-text-col {
+  flex: 1;
+  margin-left: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dobato-id-card-scan-label {
+  font-size: 7.6px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.dobato-id-card-scan-sublabel {
+  font-size: 6.3px;
+  font-weight: 500;
+  color: #f472b6;
+  margin-top: 2px;
+}
+
+.dobato-id-card-back-heart-decor {
+  flex-shrink: 0;
+  opacity: 0.6;
+  filter: drop-shadow(0 0 5px rgba(236, 72, 153, 0.45));
+}
+
+/* Back Footer & Socials */
+.dobato-id-card-back-footer {
+  border-top: 1px solid rgba(236, 72, 153, 0.3);
+  padding-top: 4px;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dobato-id-card-website {
+  font-size: 7.2px;
+  font-weight: 700;
+  color: #fbcfe8;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+}
+
+.dobato-id-card-socials {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #f472b6;
+}
+
+.dobato-id-card-social-icon {
+  width: 11px;
+  height: 11px;
+  opacity: 0.9;
+  transition: opacity 0.15s ease;
+}
+
+/* ==========================================================================
+   PRINT LAYOUT SPECIFIC (3" x 4" Strict Page Size)
+   ========================================================================== */
+@media print {
+  @page {
+    size: 3in 4in;
+    margin: 0;
+  }
+
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide everything except the print container */
+  body * {
+    visibility: hidden;
+  }
+
+  #dobato-id-card-print-root,
+  #dobato-id-card-print-root * {
+    visibility: visible;
+  }
+
+  #dobato-id-card-print-root {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  /* Each card page */
+  .dobato-id-card-print-page {
+    width: 3in !important;
+    height: 4in !important;
+    page-break-after: always;
+    break-after: page;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .dobato-id-card-frame {
+    box-shadow: none !important;
+    border-radius: 0 !important; /* Flat edges for precise bleed / cutting */
+    width: 3in !important;
+    height: 4in !important;
+  }
+
+  /* For A4 Sheet Print Mode */
+  .dobato-print-sheet-mode {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 0.4in !important;
+    padding-top: 0.5in !important;
+  }
+
+  .dobato-print-sheet-mode .dobato-id-card-print-page {
+    page-break-after: auto !important;
+    break-after: auto !important;
+    border: 1px dashed #cccccc !important;
+    border-radius: 12px !important;
+  }
+}
+
+/* ==========================================================================
+   PREVIEW MODAL & WORKSPACE STYLES
+   ========================================================================== */
+.dobato-idcard-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(6, 3, 14, 0.88);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.dobato-idcard-modal-dialog {
+  background: #110926;
+  border: 1px solid rgba(236, 72, 153, 0.4);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 920px;
+  max-height: 94vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow:
+    0 25px 60px -12px rgba(0, 0, 0, 0.85),
+    0 0 35px rgba(139, 92, 246, 0.22);
+  color: #ffffff;
+}
+
+.dobato-idcard-modal-header {
+  padding: 1.15rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(18, 9, 38, 0.7);
+}
+
+.dobato-idcard-modal-body {
+  padding: 1.25rem 1.5rem 1.5rem 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.dobato-idcard-preview-stage-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, rgba(32, 14, 62, 0.5) 0%, rgba(9, 4, 20, 0.8) 100%);
+  border-radius: 12px;
+  border: 1px dashed rgba(236, 72, 153, 0.3);
+  padding: 1.75rem 1.25rem;
+  overflow-x: auto;
+  min-height: 480px;
+  box-sizing: border-box;
+}
+
+.dobato-idcard-preview-stage {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center top;
+}
+
+.dobato-idcard-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.dobato-idcard-card-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: #f472b6;
+  text-transform: uppercase;
+  background: rgba(236, 72, 153, 0.12);
+  border: 1px solid rgba(236, 72, 153, 0.25);
+  padding: 0.2rem 0.65rem;
+  border-radius: 6px;
+}
+
+.dobato-idcard-actions-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}

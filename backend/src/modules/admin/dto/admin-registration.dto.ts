@@ -33,13 +33,13 @@ export class AdminCreateRegistrationDto {
   @Transform(({ value }) => (typeof value === 'string' ? value.trim().toLowerCase() : value))
   email: string;
 
-  @ApiProperty({ example: '+9779841112233', description: 'Contact phone number' })
+  @ApiProperty({ example: '+9779841112233', description: 'Contact phone number (supports 98 and 97 prefixes)' })
   @IsString()
   @IsNotEmpty({ message: 'Phone number is required' })
-  @Matches(/^(\+?977[- ]?)?[9][6-8]\d{8}$|^(\+?\d{1,4}[- ]?)?\d{7,14}$/, {
-    message: 'Phone number must be a valid mobile or phone format (e.g. +97798XXXXXXXX)',
+  @Matches(/^(\+?977[- ]?)?[9][6-8]\d{8}$|^(\+?\d{1,4}[- ]?)?\d{7,15}$/, {
+    message: 'Phone number must be a valid mobile or phone format (e.g. +97798XXXXXXXX or +97797XXXXXXXX)',
   })
-  @Transform(({ value }) => (typeof value === 'string' ? value.trim() : value))
+  @Transform(({ value }) => (typeof value === 'string' ? value.trim().replace(/[\s-]/g, '') : value))
   phone: string;
 
   @ApiPropertyOptional({ example: 24 })
@@ -61,6 +61,12 @@ export class AdminCreateRegistrationDto {
   @MaxLength(50)
   @Transform(({ value }) => (typeof value === 'string' ? value.trim() : value))
   gender?: string;
+
+  @ApiPropertyOptional({ example: 'https://res.cloudinary.com/.../photo.jpg' })
+  @IsOptional()
+  @IsString()
+  @Transform(({ value }) => (typeof value === 'string' ? value.trim() : value))
+  photoUrl?: string;
 
   @ApiPropertyOptional({
     enum: ParticipationType,
@@ -168,10 +174,10 @@ export class AdminUpdateRegistrationDto {
   @ApiPropertyOptional({ example: '+9779841112233' })
   @IsOptional()
   @IsString()
-  @Matches(/^(\+?977[- ]?)?[9][6-8]\d{8}$|^(\+?\d{1,4}[- ]?)?\d{7,14}$/, {
-    message: 'Phone number must be a valid mobile or phone format',
+  @Matches(/^(\+?977[- ]?)?[9][6-8]\d{8}$|^(\+?\d{1,4}[- ]?)?\d{7,15}$/, {
+    message: 'Phone number must be a valid mobile or phone format (e.g. +97798XXXXXXXX or +97797XXXXXXXX)',
   })
-  @Transform(({ value }) => (typeof value === 'string' ? value.trim() : value))
+  @Transform(({ value }) => (typeof value === 'string' ? value.trim().replace(/[\s-]/g, '') : value))
   phone?: string;
 
   @ApiPropertyOptional({ example: 25 })
@@ -191,6 +197,12 @@ export class AdminUpdateRegistrationDto {
   @IsOptional()
   @IsString()
   gender?: string;
+
+  @ApiPropertyOptional({ example: 'https://res.cloudinary.com/.../photo.jpg' })
+  @IsOptional()
+  @IsString()
+  @Transform(({ value }) => (typeof value === 'string' ? value.trim() : value))
+  photoUrl?: string;
 
   @ApiPropertyOptional({ enum: ParticipationType })
   @IsOptional()

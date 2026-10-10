@@ -12,8 +12,8 @@ export const AdminPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="Admin Portal | DOBATO"
-        description="DOBATO Admin Dashboard Foundation — Future Management Portal."
+        title="Admin Portal | Dobatoo"
+        description="Dobatoo Admin Dashboard Foundation — Future Management Portal."
       />
 
       <Section variant="dark" padding="xl" style={{ paddingTop: '9rem' }}>
@@ -23,7 +23,7 @@ export const AdminPage: React.FC = () => {
               Phase 1 Route Foundation — /admin
             </Badge>
             <Heading as="h1" fontFamily="sans">
-              DOBATO <GradientText variant="primary">Admin Portal Structure</GradientText>
+              Dobatoo <GradientText variant="primary">Admin Portal Structure</GradientText>
             </Heading>
             <p className="text-body-lg" style={{ marginTop: '1rem' }}>
               Route placeholder reserved for future Phase admin control dashboard.

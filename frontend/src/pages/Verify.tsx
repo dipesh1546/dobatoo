@@ -54,8 +54,8 @@ export const VerifyPage: React.FC = () => {
   return (
     <>
       <SEO
-        title="Event Verification — DOBATO"
-        description="DOBATO Registration Pass Verification."
+        title="Event Verification — Dobatoo"
+        description="Dobatoo Registration Pass Verification."
       />
 
       {/* Prevent search indexing for verification page */}
@@ -72,7 +72,7 @@ export const VerifyPage: React.FC = () => {
           </Heading>
 
           <p className="text-body" style={{ marginBottom: '2.5rem' }}>
-            DOBATO Grand Launch • {EVENT_DATE}
+            Dobatoo Grand Launch • {EVENT_DATE}
           </p>
 
           <div style={{ maxWidth: '540px', margin: '0 auto' }}>
@@ -104,12 +104,12 @@ export const VerifyPage: React.FC = () => {
                 </Heading>
 
                 <p className="text-body-sm" style={{ marginBottom: '2rem' }}>
-                  The provided QR code or token could not be verified. Please ensure you have a valid DOBATO event pass.
+                  The provided QR code or token could not be verified. Please ensure you have a valid Dobatoo event pass.
                 </p>
 
                 <Link to="/">
                   <Button variant="outline" size="md" icon={<Home size={16} />}>
-                    Return to DOBATO
+                    Return to Dobatoo
                   </Button>
                 </Link>
               </Card>
@@ -143,12 +143,12 @@ export const VerifyPage: React.FC = () => {
                 )}
 
                 <p className="text-body-sm" style={{ marginBottom: '2rem' }}>
-                  This registration pass is verified and active for the DOBATO Grand Launch.
+                  This registration pass is verified and active for the Dobatoo Grand Launch.
                 </p>
 
                 <Link to="/">
                   <Button variant="outline" size="md" icon={<Home size={16} />}>
-                    Return to DOBATO
+                    Return to Dobatoo
                   </Button>
                 </Link>
               </Card>
@@ -206,7 +206,7 @@ export const VerifyPage: React.FC = () => {
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                   <Link to="/">
                     <Button variant="primary" size="md" icon={<Home size={16} />}>
-                      Return to DOBATO
+                      Return to Dobatoo
                     </Button>
                   </Link>
                 </div>

@@ -51,7 +51,7 @@ export const EventExperienceSection: React.FC = () => {
       <Container size="xl">
         <div className="experience-header">
           <Badge variant="romantic" size="md" icon={<Sparkles size={14} />}>
-            THE DOBATO EXPERIENCE
+            THE DOBATOO EXPERIENCE
           </Badge>
 
           <Heading as="h2" fontFamily="serif" style={{ marginTop: '0.75rem', marginBottom: '0.75rem' }}>
@@ -73,7 +73,7 @@ export const EventExperienceSection: React.FC = () => {
                 <div className="experience-image-wrapper">
                   <img
                     src={item.image}
-                    alt={`${item.title} — DOBATO Grand Launch`}
+                    alt={`${item.title} — Dobatoo Grand Launch`}
                     className={`experience-image ${isLoaded ? 'experience-image-loaded' : ''}`}
                     loading="lazy"
                     onLoad={() => setLoadedMap((prev) => ({ ...prev, [item.number]: true }))}

@@ -91,3 +91,46 @@ body {
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
+
+/* Dobatoo Brand Stylized Typography */
+.dobatoo-brand-styled {
+  font-family: 'Plus Jakarta Sans', var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  background: linear-gradient(135deg, #ffffff 0%, #fce7f3 45%, #f472b6 80%, #d946ef 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-inline-flex;
+  align-items: baseline;
+  text-shadow: 0 0 20px rgba(236, 72, 153, 0.35);
+  position: relative;
+}
+
+.dobatoo-brand-styled .dobatoo-brand-accent-oo,
+.dobatoo-accent-o,
+.dobatoo-accent-oo {
+  background: linear-gradient(135deg, #ec4899 0%, #f43f5e 40%, #d946ef 80%, #8b5cf6 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  filter: drop-shadow(0 0 10px rgba(236, 72, 153, 0.75));
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  display: inline-block;
+}
+
+.dobatoo-badge-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #f472b6;
+  background: rgba(236, 72, 153, 0.12);
+  border: 1px solid rgba(236, 72, 153, 0.3);
+  border-radius: 9999px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 12px rgba(236, 72, 153, 0.2);
+}

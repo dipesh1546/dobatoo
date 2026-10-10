@@ -48,7 +48,7 @@ export const LegalPageLayout: React.FC<LegalPageLayoutProps> = ({ document }) =>
 
           <div style={{ marginTop: '1.25rem', marginBottom: '0.75rem' }}>
             <Badge variant="romantic" size="sm" icon={<Shield size={14} />}>
-              DOBATO Official Guidelines
+              Dobatoo Official Guidelines
             </Badge>
           </div>
 
@@ -63,7 +63,7 @@ export const LegalPageLayout: React.FC<LegalPageLayoutProps> = ({ document }) =>
             </span>
             <span className="legal-meta-item">
               <FileText size={14} />
-              <span>DOBATO Official Legal Terms</span>
+              <span>Dobatoo Official Legal Terms</span>
             </span>
           </div>
         </Container>
@@ -117,7 +117,7 @@ export const LegalPageLayout: React.FC<LegalPageLayoutProps> = ({ document }) =>
                     Have questions about {document.title}?
                   </h4>
                   <p style={{ fontSize: '0.875rem', color: 'var(--dobato-muted)', margin: '0.25rem 0 0 0' }}>
-                    Contact our official team at <strong>support@dobato.app</strong> or visit the DOBATO Grand Launch help desk.
+                    Contact our official team at <strong>support@dobatoo.app</strong> or visit the Dobatoo Grand Launch help desk.
                   </p>
                 </div>
                 <Link to="/#about" className="dobato-btn dobato-btn-secondary dobato-btn-sm">

@@ -21,23 +21,23 @@ let MOCK_COMPETITION: PoetryCompetition = {
   prizes: [
     {
       rank: 1,
-      cashPrize: 'NPR 3,000',
+      cashPrize: 'NPR 2,500',
       trophy: true,
       tshirt: true,
-      accessDuration: 'Lifetime Free DOBATO Access',
+      accessDuration: 'Lifetime Free Dobatoo Access',
     },
     {
       rank: 2,
-      cashPrize: 'NPR 2,000',
+      cashPrize: 'NPR 1,000',
       trophy: true,
       tshirt: true,
-      accessDuration: '6 Months Free DOBATO Access',
+      accessDuration: '6 Months Free Dobatoo Access',
     },
     {
       rank: 3,
       trophy: true,
       tshirt: true,
-      accessDuration: '3 Months Free DOBATO Access',
+      accessDuration: '3 Months Free Dobatoo Access',
     },
   ],
 };
@@ -48,7 +48,7 @@ let MOCK_AUDIT_LOGS: AuditLog[] = [
     timestamp: '2026-10-08T09:00:00Z',
     action: 'Competition Created',
     actor: 'Lead Admin',
-    details: 'Competition created with theme: DOBATO — जहाँ दुई बाटो भेटिन्छन्',
+    details: 'Competition created with theme: Searching / Finding the Right Person — Dobatoo',
   },
   {
     id: 'AUD-002',
@@ -271,7 +271,8 @@ export const poetryAdminService = {
           id: p.id,
           registrationId: p.registrationId || (p.registration ? p.registration.registrationId : p.id),
           participantName: p.participantName || p.fullName || (p.registration ? p.registration.fullName : 'Unknown'),
-          poetryTitle: p.poetryTitle || p.stageIntroductionName || 'DOBATO Performance',
+          photoUrl: p.photoUrl || (p.registration ? p.registration.photoUrl : undefined),
+          poetryTitle: p.poetryTitle || p.stageIntroductionName || 'Dobatoo Performance',
           language: p.language || 'NEPALI',
           performanceType: p.performanceType || 'POETRY',
           description: p.description || '',
@@ -285,6 +286,7 @@ export const poetryAdminService = {
             age: p.age ?? (p.registration ? p.registration.age : 20) ?? 20,
             city: p.city || (p.registration ? p.registration.city : 'Kathmandu') || 'Kathmandu',
             gender: p.gender || (p.registration ? p.registration.gender : 'OTHER'),
+            photoUrl: p.photoUrl || (p.registration ? p.registration.photoUrl : undefined),
           },
         }));
 
@@ -359,7 +361,8 @@ export const poetryAdminService = {
           id: p.id,
           registrationId: p.registrationId || (p.registration ? p.registration.registrationId : p.id),
           participantName: p.participantName || p.fullName || (p.registration ? p.registration.fullName : 'Unknown'),
-          poetryTitle: p.poetryTitle || p.stageIntroductionName || 'DOBATO Performance',
+          photoUrl: p.photoUrl || (p.registration ? p.registration.photoUrl : undefined),
+          poetryTitle: p.poetryTitle || p.stageIntroductionName || 'Dobatoo Performance',
           language: p.language || 'NEPALI',
           performanceType: p.performanceType || 'POETRY',
           description: p.description || '',
@@ -373,6 +376,7 @@ export const poetryAdminService = {
             age: p.age ?? (p.registration ? p.registration.age : 20) ?? 20,
             city: p.city || (p.registration ? p.registration.city : 'Kathmandu') || 'Kathmandu',
             gender: p.gender || (p.registration ? p.registration.gender : 'OTHER'),
+            photoUrl: p.photoUrl || (p.registration ? p.registration.photoUrl : undefined),
           },
         };
         return {

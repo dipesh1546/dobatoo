@@ -61,7 +61,7 @@ export const adminAuthService = {
         const dummyUser: AdminUser = {
           id: 'adm-001',
           email,
-          name: 'DOBATO Organizer',
+          name: 'Dobatoo Organizer',
           role: 'SUPER_ADMIN',
           token: `dbt_jwt_session_${Date.now()}_secure_organizer_token`,
         };
@@ -77,7 +77,7 @@ export const adminAuthService = {
       return {
         success: false,
         statusCode: 401,
-        message: 'Invalid email or password. Authorized DOBATO organizers only.',
+        message: 'Invalid email or password. Authorized Dobatoo organizers only.',
       };
     }
   },

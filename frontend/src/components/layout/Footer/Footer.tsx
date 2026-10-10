@@ -25,7 +25,7 @@ export const Footer: React.FC = () => {
               <a
                 href="#"
                 className="dobato-footer-social-icon"
-                aria-label="DOBATO on Instagram"
+                aria-label="Dobatoo on Instagram"
                 onClick={(e) => e.preventDefault()}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -39,7 +39,7 @@ export const Footer: React.FC = () => {
               <a
                 href="#"
                 className="dobato-footer-social-icon"
-                aria-label="DOBATO on Facebook"
+                aria-label="Dobatoo on Facebook"
                 onClick={(e) => e.preventDefault()}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
               <a
                 href="#"
                 className="dobato-footer-social-icon"
-                aria-label="DOBATO on YouTube"
+                aria-label="Dobatoo on YouTube"
                 onClick={(e) => e.preventDefault()}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -64,7 +64,7 @@ export const Footer: React.FC = () => {
               <a
                 href="#"
                 className="dobato-footer-social-icon"
-                aria-label="DOBATO on TikTok"
+                aria-label="Dobatoo on TikTok"
                 onClick={(e) => e.preventDefault()}
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -76,7 +76,7 @@ export const Footer: React.FC = () => {
               <a
                 href="mailto:contact@dobato.app"
                 className="dobato-footer-social-icon"
-                aria-label="Email DOBATO Team"
+                aria-label="Email Dobatoo Team"
               >
                 <Mail size={18} />
               </a>
@@ -109,7 +109,7 @@ export const Footer: React.FC = () => {
         {/* Footer Bottom Bar */}
         <div className="dobato-footer-bottom">
           <p>
-            © {currentYear} DOBATO. {BRAND_SLOGAN} All rights reserved.
+            © {currentYear} Dobatoo. {BRAND_SLOGAN} All rights reserved.
           </p>
           <div className="dobato-footer-legal-links">
             <Link to="/privacy-policy" className="dobato-footer-link" style={{ fontSize: '0.8rem' }}>

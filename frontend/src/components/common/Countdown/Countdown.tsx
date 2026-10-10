@@ -53,17 +53,17 @@ export const Countdown: React.FC = () => {
     <div className="dobato-countdown-container" aria-label="Event Countdown Timer">
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--dobato-pink)', fontWeight: 600, fontSize: '0.9rem' }}>
         <Calendar size={16} />
-        <span>DOBATO GRAND LAUNCH • 16 OCTOBER 2026</span>
+        <span>DOBATOO GRAND LAUNCH • 16 OCTOBER 2026</span>
         <Sparkles size={14} />
       </div>
 
       {timeLeft.status === 'TODAY' ? (
         <div className="dobato-countdown-completed">
-          DOBATO Grand Launch is Today ❤️
+          Dobatoo Grand Launch is Today ❤️
         </div>
       ) : timeLeft.status === 'COMPLETED' ? (
         <div className="dobato-countdown-completed">
-          Thank you for being part of DOBATO.
+          Thank you for being part of Dobatoo.
         </div>
       ) : (
         <div className="dobato-countdown-grid">

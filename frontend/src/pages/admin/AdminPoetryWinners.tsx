@@ -64,9 +64,9 @@ export const AdminPoetryWinnersPage: React.FC = () => {
 
   const constructPayload = () => {
     return {
-      firstPlace: buildSlot(firstId, 'NPR 3,000 + DOBATO Trophy + T-shirt + Lifetime Free DOBATO Access'),
-      secondPlace: buildSlot(secondId, 'NPR 2,000 + DOBATO Trophy + T-shirt + 6 Months Free DOBATO Access'),
-      thirdPlace: buildSlot(thirdId, 'DOBATO Trophy + DOBATO T-shirt + 3 Months Free DOBATO Access'),
+      firstPlace: buildSlot(firstId, 'NPR 2,500 + Dobatoo Trophy + T-shirt + Lifetime Free Dobatoo Access'),
+      secondPlace: buildSlot(secondId, 'NPR 1,000 + Dobatoo Trophy + T-shirt + 6 Months Free Dobatoo Access'),
+      thirdPlace: buildSlot(thirdId, 'Dobatoo Trophy + Dobatoo T-shirt + 3 Months Free Dobatoo Access'),
     };
   };
 
@@ -123,7 +123,7 @@ export const AdminPoetryWinnersPage: React.FC = () => {
             Winner Selection & Finalization
           </h2>
           <p style={{ fontSize: '0.875rem', color: '#64748b', marginTop: '0.25rem' }}>
-            Assign official DOBATO Grand Launch 1st, 2nd, and 3rd place competition winners
+            Assign official Dobatoo Grand Launch 1st, 2nd, and 3rd place competition winners
           </p>
         </div>
 
@@ -191,9 +191,9 @@ export const AdminPoetryWinnersPage: React.FC = () => {
           </div>
 
           <div style={{ padding: '0.75rem', borderRadius: '6px', backgroundColor: '#ffffff', border: '1px solid #fef08a', marginBottom: '1rem' }}>
-            <div style={{ fontSize: '0.875rem', fontWeight: 800, color: '#ca8a04' }}>NPR 3,000</div>
+            <div style={{ fontSize: '0.875rem', fontWeight: 800, color: '#ca8a04' }}>NPR 2,500</div>
             <div style={{ fontSize: '0.75rem', color: '#713f12', fontWeight: 600 }}>
-              DOBATO Trophy + DOBATO T-shirt + Lifetime Free Access
+              Dobatoo Trophy + Dobatoo T-shirt + Lifetime Free Access
             </div>
           </div>
 
@@ -225,9 +225,9 @@ export const AdminPoetryWinnersPage: React.FC = () => {
           </div>
 
           <div style={{ padding: '0.75rem', borderRadius: '6px', backgroundColor: '#ffffff', border: '1px solid #e2e8f0', marginBottom: '1rem' }}>
-            <div style={{ fontSize: '0.875rem', fontWeight: 800, color: '#475569' }}>NPR 2,000</div>
+            <div style={{ fontSize: '0.875rem', fontWeight: 800, color: '#475569' }}>NPR 1,000</div>
             <div style={{ fontSize: '0.75rem', color: '#64748b', fontWeight: 600 }}>
-              DOBATO Trophy + DOBATO T-shirt + 6 Months Free Access
+              Dobatoo Trophy + Dobatoo T-shirt + 6 Months Free Access
             </div>
           </div>
 
@@ -263,7 +263,7 @@ export const AdminPoetryWinnersPage: React.FC = () => {
               3 Months Free Access
             </div>
             <div style={{ fontSize: '0.75rem', color: '#92400e', fontWeight: 600 }}>
-              DOBATO Trophy + DOBATO T-shirt
+              Dobatoo Trophy + Dobatoo T-shirt
             </div>
           </div>
 

@@ -11,7 +11,7 @@ let MOCK_WINNERS: WinnerSelection = {
     participantName: 'Aayush Shrestha',
     poetryTitle: 'Mayaluki Batoma (मायालुकी बाटोमा)',
     weightedScore: 87.5,
-    prizeText: 'NPR 3,000 + Trophy + T-shirt + Lifetime Free DOBATO Access',
+    prizeText: 'NPR 2,500 + Trophy + T-shirt + Lifetime Free Dobatoo Access',
   },
   secondPlace: {
     participantId: 'PTR-2026-002',
@@ -19,7 +19,7 @@ let MOCK_WINNERS: WinnerSelection = {
     participantName: 'Rohan Gurung',
     poetryTitle: 'Echoes of Fewa',
     weightedScore: 85.0,
-    prizeText: 'NPR 2,000 + Trophy + T-shirt + 6 Months Free DOBATO Access',
+    prizeText: 'NPR 1,000 + Trophy + T-shirt + 6 Months Free Dobatoo Access',
   },
   thirdPlace: {
     participantId: 'PTR-2026-005',
@@ -27,7 +27,7 @@ let MOCK_WINNERS: WinnerSelection = {
     participantName: 'Manish Verma',
     poetryTitle: 'Dil Ki Baat (दिल की बात)',
     weightedScore: 82.5,
-    prizeText: 'Trophy + T-shirt + 3 Months Free DOBATO Access',
+    prizeText: 'Trophy + T-shirt + 3 Months Free Dobatoo Access',
   },
 };
 

@@ -27,10 +27,10 @@ export class PrizeResponseDto {
   @ApiProperty({ example: 'First Prize' })
   title: string;
 
-  @ApiProperty({ example: 3000, nullable: true })
+  @ApiProperty({ example: 2500, nullable: true })
   cashAmount: number | null;
 
-  @ApiPropertyOptional({ example: 3000, nullable: true })
+  @ApiPropertyOptional({ example: 2500, nullable: true })
   cashPrize?: number | null;
 
   @ApiProperty({ example: 'NPR' })

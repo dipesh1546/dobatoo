@@ -14,8 +14,8 @@ interface ShareButtonProps {
 }
 
 export const ShareButton: React.FC<ShareButtonProps> = ({
-  title = 'DOBATO Grand Launch',
-  text = 'Join the DOBATO Grand Launch on 16 October 2026 — an evening of poetry, music and meaningful connections. Two Paths. One Connection.',
+  title = 'Dobatoo Grand Launch',
+  text = 'Join the Dobatoo Grand Launch on 16 October 2026 — an evening of poetry, music and meaningful connections. Two Paths. One Connection.',
   url = typeof window !== 'undefined' ? window.location.href : 'https://dobato.app',
   variant = 'primary',
   size = 'md',

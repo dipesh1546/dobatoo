@@ -367,9 +367,9 @@ describe('PoetryJudgingService (Phase 7)', () => {
       });
 
       mockPrismaService.prize.findMany.mockResolvedValue([
-        { position: 1, title: 'First Prize', cashAmount: 3000, currency: 'NPR' },
-        { position: 2, title: 'Second Prize', cashAmount: 2000, currency: 'NPR' },
-        { position: 3, title: 'Third Prize', cashAmount: 1000, currency: 'NPR' },
+        { position: 1, title: 'First Prize', cashAmount: 2500, currency: 'NPR' },
+        { position: 2, title: 'Second Prize', cashAmount: 1000, currency: 'NPR' },
+        { position: 3, title: 'Third Prize', cashAmount: null, currency: 'NPR' },
       ]);
 
       mockPrismaService.poetryParticipant.findMany.mockResolvedValue([]);

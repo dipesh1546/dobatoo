@@ -73,7 +73,7 @@ export const Logo: React.FC<LogoProps> = ({
       </div>
       <div className="dobato-logo-text-group">
         <span className={`dobato-logo-wordmark ${wordmarkClass}`}>
-          DOBATO
+          Dobato<span className="dobato-logo-accent-o">o</span>
         </span>
         {showTagline && (
           <span className="dobato-logo-tagline">

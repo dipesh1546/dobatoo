@@ -27,10 +27,10 @@ export const WhatIsDobatoSection: React.FC = () => {
       <Container size="xl">
         <div style={{ textAlign: 'center', maxWidth: '760px', margin: '0 auto 3.5rem auto' }}>
           <Heading as="h2" fontFamily="sans">
-            What is <GradientText variant="primary">DOBATO?</GradientText>
+            What is <GradientText variant="primary">Dobatoo?</GradientText>
           </Heading>
           <p className="text-body-lg" style={{ marginTop: '1rem' }}>
-            DOBATO is a Nepali dating and meaningful-connection platform designed to help people discover new people, start genuine conversations and create meaningful relationships.
+            <span className="dobatoo-brand-styled">Dobato<span className="dobatoo-brand-accent-oo">o</span></span> is a Nepali dating and meaningful-connection platform designed to help people discover new people, start genuine conversations and create meaningful relationships.
           </p>
         </div>
 

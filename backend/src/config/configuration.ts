@@ -12,6 +12,11 @@ export interface AppConfig {
     fromName?: string;
   };
   jwtSecret?: string;
+  cloudinary?: {
+    cloudName?: string;
+    apiKey?: string;
+    apiSecret?: string;
+  };
 }
 
 export default (): AppConfig => {
@@ -54,5 +59,10 @@ export default (): AppConfig => {
       fromName: process.env.SMTP_FROM_NAME || 'DOBATO Team',
     },
     jwtSecret: process.env.JWT_SECRET,
+    cloudinary: {
+      cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+      apiKey: process.env.CLOUDINARY_API_KEY,
+      apiSecret: process.env.CLOUDINARY_API_SECRET,
+    },
   };
 };

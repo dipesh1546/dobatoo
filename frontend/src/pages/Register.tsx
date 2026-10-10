@@ -8,11 +8,10 @@ import { GradientText } from '../components/ui/GradientText/GradientText';
 import { Card } from '../components/ui/Card/Card';
 import { Badge } from '../components/ui/Badge/Badge';
 import { Button } from '../components/ui/Button/Button';
-import { EVENT_DATE, EVENT_VENUE_NAME, EVENT_VENUE_FULL } from '../constants/brand';
+import { EVENT_DATE, EVENT_VENUE_NAME, EVENT_VENUE_FULL, EVENT_POETRY_THEME } from '../constants/brand';
 import { registrationService } from '../services/registrationService';
 import type {
   ParticipationType,
-  GenderType,
   PerformanceType,
   DiscoverySource,
   RegistrationPayload,
@@ -28,6 +27,9 @@ import {
   Feather,
   Users,
   MapPin,
+  UploadCloud,
+  Trash2,
+  Loader2,
 } from 'lucide-react';
 import './Register.css';
 
@@ -55,7 +57,12 @@ export const RegisterPage: React.FC = () => {
   const [fullName, setFullName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
-  const [gender, setGender] = useState<GenderType>('PREFER_NOT_TO_SAY');
+
+  // Photo Upload State (Optional - For Giveaways & Badges)
+  const [photoUrl, setPhotoUrl] = useState<string>('');
+  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
+  const [isUploadingPhoto, setIsUploadingPhoto] = useState<boolean>(false);
+  const [photoUploadError, setPhotoUploadError] = useState<string | null>(null);
 
   // Discovery Field
   const [discoverySource, setDiscoverySource] = useState<DiscoverySource>('INSTAGRAM');
@@ -91,7 +98,7 @@ export const RegisterPage: React.FC = () => {
     const phoneClean = phone.replace(/\s+|-/g, '');
     const phoneRegex = /^(?:\+?977)?9[78]\d{8}$/;
     if (!phoneClean || !phoneRegex.test(phoneClean)) {
-      newErrors.phone = 'Please enter a valid 10-digit phone number (e.g. 98XXXXXXXX).';
+      newErrors.phone = 'Please enter a valid 10-digit phone number (e.g. 98XXXXXXXX or 97XXXXXXXX).';
     }
 
     if (!discoverySource) {
@@ -120,6 +127,41 @@ export const RegisterPage: React.FC = () => {
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
+  };
+
+  const handlePhotoSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.match(/^image\/(jpeg|png|webp|gif|jpg)$/i)) {
+      setPhotoUploadError('Please select a valid image file (JPG, PNG, or WEBP).');
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      setPhotoUploadError('Image size must be less than 5MB.');
+      return;
+    }
+
+    setPhotoUploadError(null);
+    const localUrl = URL.createObjectURL(file);
+    setPhotoPreview(localUrl);
+    setIsUploadingPhoto(true);
+
+    const result = await registrationService.uploadPhoto(file);
+    setIsUploadingPhoto(false);
+
+    if (result.success && result.url) {
+      setPhotoUrl(result.url);
+    } else {
+      setPhotoUploadError(result.error || 'Upload failed. You can still proceed without photo.');
+    }
+  };
+
+  const handleRemovePhoto = () => {
+    setPhotoUrl('');
+    setPhotoPreview(null);
+    setPhotoUploadError(null);
   };
 
   const handleNext = () => {
@@ -173,7 +215,7 @@ export const RegisterPage: React.FC = () => {
       fullName: fullName.trim(),
       email: email.trim().toLowerCase(),
       phone: phone.trim(),
-      gender: gender,
+      photoUrl: photoUrl || undefined,
       participationType: participationType,
       discoverySource: discoverySource,
       discoverySourceOther: discoverySource === 'OTHERS' ? discoverySourceOther.trim() : undefined,
@@ -181,7 +223,7 @@ export const RegisterPage: React.FC = () => {
       performanceType: isParticipating ? performanceType : undefined,
       performanceDescription: isParticipating ? performanceDescription.trim() || undefined : undefined,
       mediaAgreement: true,
-      topic: isParticipating ? 'DOBATO' : undefined,
+      topic: isParticipating ? EVENT_POETRY_THEME : undefined,
     };
 
     try {
@@ -222,8 +264,8 @@ export const RegisterPage: React.FC = () => {
   return (
     <>
       <SEO
-        title={`Register Free — DOBATO Grand Launch Open Mic • ${EVENT_VENUE_NAME}`}
-        description={`Register for free for the DOBATO Grand Launch Open Mic event on 16 October 2026 at ${EVENT_VENUE_FULL}. Poetry Theme: DOBATO.`}
+        title={`Register Free — Dobatoo Grand Launch Open Mic • ${EVENT_VENUE_NAME}`}
+        description={`Register for free for the Dobatoo Grand Launch Open Mic event on 16 October 2026 at ${EVENT_VENUE_FULL}. Poetry Theme: ${EVENT_POETRY_THEME}.`}
       />
 
       <Section variant="dark" padding="xl" className="register-container">
@@ -239,7 +281,7 @@ export const RegisterPage: React.FC = () => {
           </Heading>
 
           <p className="text-body-lg" style={{ marginBottom: '0.4rem', color: 'rgba(255, 255, 255, 0.95)', fontWeight: 600 }}>
-            DOBATO Grand Launch • {EVENT_DATE}
+            Dobatoo Grand Launch • {EVENT_DATE}
           </p>
 
           <div
@@ -344,7 +386,7 @@ export const RegisterPage: React.FC = () => {
                       </div>
 
                       <p className="text-body-sm" style={{ color: 'rgba(255, 255, 255, 0.8)', margin: 0 }}>
-                        Perform Poetry, Story Telling, Music, or Other expressions and compete for cash prizes (1st: NPR 3,000 | 2nd: NPR 2,000).
+                        Perform Poetry, Story Telling, Music, or Other expressions and compete for cash prizes (1st: NPR 2,500 | 2nd: NPR 1,000).
                       </p>
 
                       <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.65rem', flexWrap: 'wrap', fontSize: '0.8rem', fontWeight: 700, color: 'var(--dobato-pink)' }}>
@@ -421,7 +463,7 @@ export const RegisterPage: React.FC = () => {
                         id="phone"
                         type="tel"
                         className={`dobato-input ${errors.phone ? 'dobato-input-error' : ''}`}
-                        placeholder="98XXXXXXXX"
+                        placeholder="98XXXXXXXX / 97XXXXXXXX"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
                         aria-invalid={!!errors.phone}
@@ -431,22 +473,135 @@ export const RegisterPage: React.FC = () => {
                       )}
                     </div>
 
-                    {/* Gender (Optional) */}
+                    {/* Photo Upload (Optional - "we will use it for give aways") */}
                     <div className="dobato-field form-group-full">
-                      <label className="dobato-label" htmlFor="gender">
-                        <span>Gender <span style={{ opacity: 0.6, fontSize: '0.8rem' }}>(Optional)</span></span>
+                      <label className="dobato-label" htmlFor="photoUploadInput">
+                        <span>
+                          Photo / Image <span style={{ opacity: 0.65, fontSize: '0.8rem' }}>(Optional)</span>
+                        </span>
                       </label>
-                      <select
-                        id="gender"
-                        className="dobato-select"
-                        value={gender}
-                        onChange={(e) => setGender(e.target.value as GenderType)}
+
+                      <div
+                        style={{
+                          background: 'rgba(255, 255, 255, 0.03)',
+                          border: '1px dashed rgba(244, 114, 182, 0.35)',
+                          borderRadius: 'var(--radius-lg)',
+                          padding: '1.25rem',
+                          textAlign: 'center',
+                          position: 'relative',
+                          transition: 'all 0.2s ease',
+                        }}
                       >
-                        <option value="PREFER_NOT_TO_SAY">Prefer not to say</option>
-                        <option value="FEMALE">Female</option>
-                        <option value="MALE">Male</option>
-                        <option value="OTHER">Other</option>
-                      </select>
+                        {photoPreview ? (
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                            <img
+                              src={photoPreview}
+                              alt="Uploaded Preview"
+                              style={{
+                                width: '64px',
+                                height: '64px',
+                                borderRadius: '50%',
+                                objectFit: 'cover',
+                                border: '2px solid var(--dobato-pink)',
+                                boxShadow: '0 4px 12px rgba(236, 72, 153, 0.25)',
+                              }}
+                            />
+                            <div style={{ textAlign: 'left' }}>
+                              <div style={{ fontSize: '0.92rem', fontWeight: 700, color: '#fff', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                                {isUploadingPhoto ? (
+                                  <>
+                                    <Loader2 size={16} className="animate-spin" /> Uploading to Cloudinary...
+                                  </>
+                                ) : (
+                                  <>
+                                    <CheckCircle2 size={16} style={{ color: '#4ade80' }} /> Photo Attached
+                                  </>
+                                )}
+                              </div>
+                              <div style={{ fontSize: '0.78rem', color: 'rgba(255, 255, 255, 0.7)', marginTop: '0.15rem' }}>
+                                Optional — we will use it for give aways
+                              </div>
+                              <button
+                                type="button"
+                                onClick={handleRemovePhoto}
+                                style={{
+                                  background: 'none',
+                                  border: 'none',
+                                  color: '#f87171',
+                                  fontSize: '0.8rem',
+                                  cursor: 'pointer',
+                                  padding: 0,
+                                  marginTop: '0.35rem',
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  gap: '0.3rem',
+                                }}
+                              >
+                                <Trash2 size={13} /> Remove photo
+                              </button>
+                            </div>
+                          </div>
+                        ) : (
+                          <div>
+                            <label
+                              htmlFor="photoUploadInput"
+                              style={{
+                                cursor: 'pointer',
+                                display: 'inline-flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                              }}
+                            >
+                              <div
+                                style={{
+                                  width: '48px',
+                                  height: '48px',
+                                  borderRadius: '50%',
+                                  background: 'rgba(244, 114, 182, 0.12)',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  color: 'var(--dobato-pink)',
+                                }}
+                              >
+                                <UploadCloud size={24} />
+                              </div>
+                              <div style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--dobato-white)' }}>
+                                Upload your photo <span style={{ opacity: 0.6, fontSize: '0.8rem' }}>(Optional)</span>
+                              </div>
+                              <div
+                                style={{
+                                  fontSize: '0.8rem',
+                                  color: 'var(--dobato-pink)',
+                                  fontWeight: 500,
+                                  background: 'rgba(236, 72, 153, 0.1)',
+                                  padding: '0.2rem 0.65rem',
+                                  borderRadius: '999px',
+                                }}
+                              >
+                                "we will use it for give aways"
+                              </div>
+                              <div style={{ fontSize: '0.74rem', color: 'rgba(255, 255, 255, 0.5)' }}>
+                                PNG, JPG or WEBP (Max 5MB)
+                              </div>
+                            </label>
+                            <input
+                              id="photoUploadInput"
+                              type="file"
+                              accept="image/png,image/jpeg,image/webp"
+                              style={{ display: 'none' }}
+                              onChange={handlePhotoSelect}
+                            />
+                          </div>
+                        )}
+
+                        {photoUploadError && (
+                          <div style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: '#f87171' }}>
+                            {photoUploadError}
+                          </div>
+                        )}
+                      </div>
                     </div>
 
                     {/* Where did you find out about this event? */}
@@ -480,7 +635,7 @@ export const RegisterPage: React.FC = () => {
                           id="discoverySourceOther"
                           type="text"
                           className={`dobato-input ${errors.discoverySourceOther ? 'dobato-input-error' : ''}`}
-                          placeholder="Tell us how you found out about DOBATO"
+                          placeholder="Tell us how you found out about Dobatoo"
                           value={discoverySourceOther}
                           onChange={(e) => setDiscoverySourceOther(e.target.value)}
                         />
@@ -515,10 +670,10 @@ export const RegisterPage: React.FC = () => {
                       POETRY THEME
                     </div>
                     <div style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--dobato-white)', marginTop: '0.15rem' }}>
-                      DOBATO
+                      {EVENT_POETRY_THEME}
                     </div>
                     <p className="text-body-sm" style={{ marginTop: '0.25rem', color: 'rgba(255, 255, 255, 0.8)' }}>
-                      Open Mic Event — Share your poetry, story, or music under the theme <strong>DOBATO</strong>.
+                      Open Mic Event — Share your poetry, story, or music under the theme <strong>{EVENT_POETRY_THEME}</strong>.
                     </p>
                   </div>
 
@@ -557,7 +712,7 @@ export const RegisterPage: React.FC = () => {
                           ✨ Theme
                         </div>
                         <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--dobato-pink)' }}>
-                          DOBATO
+                          {EVENT_POETRY_THEME}
                         </div>
                       </div>
                     </div>
@@ -701,10 +856,19 @@ export const RegisterPage: React.FC = () => {
                           <span className="review-label">Phone</span>
                           <span className="review-value">{phone}</span>
                         </div>
-                        <div>
-                          <span className="review-label">Gender</span>
-                          <span className="review-value">{gender.replace(/_/g, ' ')}</span>
-                        </div>
+                        {photoPreview && (
+                          <div>
+                            <span className="review-label">Photo</span>
+                            <span className="review-value" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                              <img
+                                src={photoPreview}
+                                alt="Photo"
+                                style={{ width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover' }}
+                              />
+                              Attached (For Giveaways)
+                            </span>
+                          </div>
+                        )}
                         <div>
                           <span className="review-label">Discovery Source</span>
                           <span className="review-value">
@@ -734,7 +898,7 @@ export const RegisterPage: React.FC = () => {
                           </div>
                           <div>
                             <span className="review-label">Theme</span>
-                            <span className="review-value" style={{ color: 'var(--dobato-pink)', fontWeight: 700 }}>DOBATO</span>
+                            <span className="review-value" style={{ color: 'var(--dobato-pink)', fontWeight: 700 }}>{EVENT_POETRY_THEME}</span>
                           </div>
                           <div>
                             <span className="review-label">Duration</span>
@@ -765,7 +929,7 @@ export const RegisterPage: React.FC = () => {
                         onChange={(e) => setMediaConsent(e.target.checked)}
                       />
                       <span className="consent-label-text" style={{ fontSize: '0.875rem', lineHeight: 1.5, color: 'rgba(255, 255, 255, 0.9)' }}>
-                        By submitting form, you agree that DOBATO may use photographs/videos of your participation for promotional purposes. <span className="dobato-required">*</span>
+                        By submitting form, you agree that Dobatoo may use photographs/videos of your participation for promotional purposes. <span className="dobato-required">*</span>
                       </span>
                     </label>
 
