@@ -9,7 +9,10 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Install build dependencies
+# Install build dependencies for OpenSSL detection and native compilation
+RUN apk add --no-cache openssl libc6-compat
+
+# Install node dependencies
 COPY package*.json ./
 COPY prisma ./prisma/
 
@@ -36,6 +39,9 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV PORT=3000
+
+# Install runtime OpenSSL 3.x, libc6 compatibility, and CA certificates for MongoDB Atlas TLS
+RUN apk add --no-cache openssl libc6-compat ca-certificates
 
 # Run as non-root user for security
 USER node
